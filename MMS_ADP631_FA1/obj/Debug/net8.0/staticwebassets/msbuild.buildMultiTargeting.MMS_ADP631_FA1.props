@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MMS_ADP631_FA1.props" />
+</Project>

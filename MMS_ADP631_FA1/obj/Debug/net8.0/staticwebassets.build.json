@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "CDciOz2/4WcVtM0ZddbZTsoDeIdJUjjn+s/00dWxaXo=",
+  "Source": "MMS_ADP631_FA1",
+  "BasePath": "_content/MMS_ADP631_FA1",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MMS_ADP631_FA1\\wwwroot",
+      "Source": "MMS_ADP631_FA1",
+      "ContentRoot": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\",
+      "BasePath": "_content/MMS_ADP631_FA1",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}
