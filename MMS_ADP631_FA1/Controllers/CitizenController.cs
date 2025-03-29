@@ -17,8 +17,8 @@ namespace MyApp.Namespace
         // GET: Citizen
         public ActionResult Index()
         {
-            var citizens = _context.Citizens.ToListAsync();
-            return View();
+            var citizens = _context.Citizens.ToList();
+            return View(citizens);
         }
 
         #region Citizen/Create

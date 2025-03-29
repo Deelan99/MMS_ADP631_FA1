@@ -17,7 +17,7 @@ namespace MMS_ADP631_FA1.Controllers
         public IActionResult Index()
         {
             var reports = _context.Reports.ToList();
-            return View();
+            return View(reports);
         }
 
         #region Report/Create

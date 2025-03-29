@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|c:\\aspnetcoreapps\\ctu_adp31_fa1_mms\\mms_adp631_fa1\\mms_adp631_fa1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|solutionrelative:mms_adp631_fa1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|c:\\aspnetcoreapps\\ctu_adp31_fa1_mms\\mms_adp631_fa1\\mms_adp631_fa1\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|solutionrelative:mms_adp631_fa1\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|c:\\aspnetcoreapps\\ctu_adp31_fa1_mms\\mms_adp631_fa1\\mms_adp631_fa1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|solutionrelative:mms_adp631_fa1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|c:\\aspnetcoreapps\\ctu_adp31_fa1_mms\\mms_adp631_fa1\\mms_adp631_fa1\\views\\citizen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E1A7055B-A785-48CE-88F0-5F97A9479AE2}|MMS_ADP631_FA1\\MMS_ADP631_FA1.csproj|solutionrelative:mms_adp631_fa1\\views\\citizen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 171,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Citizen\\Index.cshtml",
+              "RelativeDocumentMoniker": "MMS_ADP631_FA1\\Views\\Citizen\\Index.cshtml",
+              "ToolTip": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Citizen\\Index.cshtml",
+              "RelativeToolTip": "MMS_ADP631_FA1\\Views\\Citizen\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T12:53:28.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "MMS_ADP631_FA1\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "MMS_ADP631_FA1\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T12:53:17.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "MMS_ADP631_FA1\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "MMS_ADP631_FA1\\Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T12:53:13.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "MMS_ADP631_FA1\\Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "MMS_ADP631_FA1\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T12:52:56.339Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

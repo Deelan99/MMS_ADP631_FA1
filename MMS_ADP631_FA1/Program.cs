@@ -12,6 +12,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Configuring the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

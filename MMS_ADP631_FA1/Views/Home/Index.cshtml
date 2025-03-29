@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MMS_ADP631_FA1.Models.Citizen>
+
+<h2>Welcome to the Municipality Management System</h2>
+
+<p>This is the home page, here is the list of all citizens:</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var citizen in Model)
+            {
+                <tr>
+                    <td>@citizen.FullName</td>
+                    <td>@citizen.Email</td>
+                    <td>@citizen.PhoneNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No citizens found in the system.</p>
+}
+
+<a asp-action="About">About Us</a>
+<p>Learn more about our Municipality Management System.</p>
+
+
+<a asp-action="Contact">Contact</a>
+<p>If you need assistance, reach out to us at contact@municipality.com</p>
