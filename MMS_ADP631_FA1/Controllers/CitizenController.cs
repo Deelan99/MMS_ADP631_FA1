@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LyCZsdS/jRb4eszfGviTCPwAd7tQ6ZohB+x/Fo8GDE0=",
+  "Hash": "MkZrVPvQmSprsuS83TOD3QVr04CBg44IB9VgWy2dLhg=",
   "Source": "MMS_ADP631_FA1",
   "BasePath": "_content/MMS_ADP631_FA1",
   "Mode": "Default",
@@ -31,14 +31,59 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "qhq2isa34s",
-      "Integrity": "Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco=",
+      "Fingerprint": "5poonwesdb",
+      "Integrity": "CWqOTdK+lOdiQ63+3w5ZlCvRv093LjDVh5/6yxuwdHg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\styles.css"
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/styles.5poonwesdb.css",
+      "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CWqOTdK+lOdiQ63+3w5ZlCvRv093LjDVh5/6yxuwdHg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 29 Mar 2025 16:11:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5poonwesdb"
+        },
+        {
+          "Name": "label",
+          "Value": "css/styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CWqOTdK+lOdiQ63+3w5ZlCvRv093LjDVh5/6yxuwdHg="
+        }
+      ]
+    },
     {
       "Route": "css/styles.css",
       "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
@@ -50,7 +95,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2130"
+          "Value": "56"
         },
         {
           "Name": "Content-Type",
@@ -58,11 +103,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco=\""
+          "Value": "\"CWqOTdK+lOdiQ63+3w5ZlCvRv093LjDVh5/6yxuwdHg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 29 Mar 2025 13:26:51 GMT"
+          "Value": "Sat, 29 Mar 2025 16:11:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72,52 +117,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco="
-        }
-      ]
-    },
-    {
-      "Route": "css/styles.qhq2isa34s.css",
-      "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2130"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 29 Mar 2025 13:26:51 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "qhq2isa34s"
-        },
-        {
-          "Name": "label",
-          "Value": "css/styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco="
+          "Value": "sha256-CWqOTdK+lOdiQ63+3w5ZlCvRv093LjDVh5/6yxuwdHg="
         }
       ]
     }

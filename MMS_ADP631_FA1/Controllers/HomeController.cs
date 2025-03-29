@@ -17,17 +17,5 @@ namespace MMS_ADP631_FA1.Controllers
             var citizens = _context.Citizens.ToList();
             return View(citizens);
         }
-
-        // About page - to provide the user some info about the application
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        // Contact page
-        public IActionResult Contact()
-        {
-            return View();
-        }
     }
 }
