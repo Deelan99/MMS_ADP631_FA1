@@ -49,19 +49,18 @@
     <div class="container mt-5">
         @if (Model == null || !Model.Any())
         {
-            <p class="h1">There are no Staff found in the system.</p>
+            <p class="h2">There are no Staff found in the system.</p>
         }
         else
         {
-            <p class="h1">Staff Members in the system</p>
+            <p class="h2">Staff Members in the system</p>
             <br />
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Full Name</th>
                         <th>Department</th>
-
-
-
+                        <th>Position</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Actions</th>
@@ -73,21 +72,20 @@
                         <tr>
                             <td>@staff.FullName</td>
                             <td>@staff.Department</td>
-                            <td>@staff.</td>
+                            <td>@staff.Position</td>
+                            <td>@staff.Email</td>
+                            <td>@staff.PhoneNumber</td>
                             <td>
-                                <a asp-action="Details" asp-route-id="@citizen.CitizenID">View</a> |
-                                <a asp-action="Edit" asp-route-id="@citizen.CitizenID">Edit</a> |
-                                <a asp-action="Delete" asp-route-id="@citizen.CitizenID">Delete</a>
+                                <a asp-action="Details" asp-route-id="@staff.StaffID">View</a> |
+                                <a asp-action="Edit" asp-route-id="@staff.StaffID">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@staff.StaffID">Delete</a>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
         }
-       
     </div>
-
-
 
     <!-- Footer -->
     <footer class="bg-dark text-white mt-5 py-4">

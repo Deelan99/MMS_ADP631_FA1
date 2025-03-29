@@ -47,7 +47,39 @@
 
     <!-- Content -->
     <div class="container mt-5">
-        
+        @if (Model == null || !Model.Any())
+        {
+            <p class="h2">There are no @ViewData["Title"] found in the system.</p>
+        }
+        else
+        {
+            <p class="h2">@ViewData["Title"] in the system</p>
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Request Date</th>
+                        <th>Service Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var request in Model)
+                    {
+                        <tr>
+                            <td>@request.RequestDate</td>
+                            <td>@request.ServiceType</td>
+                            <td>@request.Status</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@request.RequestID">View</a> |
+                                <a asp-action="Edit" asp-route-id="@request.RequestID">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@request.RequestID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
 
     <!-- Footer -->

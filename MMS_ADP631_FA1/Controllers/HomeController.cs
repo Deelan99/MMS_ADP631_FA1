@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MMS_ADP631_FA1.Data;
+using MMS_ADP631_FA1.Models;
 
 namespace MMS_ADP631_FA1.Controllers
 {
@@ -14,8 +15,13 @@ namespace MMS_ADP631_FA1.Controllers
 
         public IActionResult Index()
         {
+            var serviceRequests = _context.ServiceRequests.ToList();
             var citizens = _context.Citizens.ToList();
-            return View(citizens);
+            var staff = _context.Staff.ToList();
+
+            var home = new Tuple<List<ServiceRequest>, List<Citizen>, List<Staff>>(serviceRequests, citizens, staff);
+
+            return View(home);
         }
     }
 }

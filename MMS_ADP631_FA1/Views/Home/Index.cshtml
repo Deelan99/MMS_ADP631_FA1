@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Tuple<List<MMS_ADP631_FA1.Models.ServiceRequest>, List<MMS_ADP631_FA1.Models.Citizen>, List<MMS_ADP631_FA1.Models.Staff>>
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -33,7 +35,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/ServiceRequest">Service Requests</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="/Reports">Reports</a>
                     </li>
@@ -57,7 +59,14 @@
                 <div class="card text-white bg-success mb-3">
                     <div class="card-header">Active Service Requests</div>
                     <div class="card-body">
-                        <h5 class="card-title">120</h5>
+                        <h5 class="card-title">
+                            <!-- Logic to count number of Service Requests in System -->
+                            @{
+                                var activeRequestsCount = Model.Item1.Count(request => request.Status == "In Progress");
+                            }
+                            @activeRequestsCount
+
+                        </h5>
                         <p class="card-text">Ongoing service requests</p>
                     </div>
                 </div>
@@ -66,7 +75,13 @@
                 <div class="card text-white bg-info mb-3">
                     <div class="card-header">Registered Citizens</div>
                     <div class="card-body">
-                        <h5 class="card-title">5000</h5>
+                        <h5 class="card-title">
+                            <!-- Logic to count number of Registered Citizens in the system -->
+                            @{
+                                var registerCitizens = Model.Item2.Count();
+                            }
+                            @registerCitizens
+                        </h5>
                         <p class="card-text">Total citizens registered</p>
                     </div>
                 </div>
@@ -75,7 +90,13 @@
                 <div class="card text-white bg-warning mb-3">
                     <div class="card-header">Staff Members</div>
                     <div class="card-body">
-                        <h5 class="card-title">80</h5>
+                        <h5 class="card-title">
+                            <!-- Logic to count number of Staff Members in the system -->
+                            @{
+                                var staffMembers = Model.Item3.Count();
+                            }
+                            @staffMembers
+                        </h5>
                         <p class="card-text">Active staff members</p>
                     </div>
                 </div>

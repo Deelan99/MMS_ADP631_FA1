@@ -12,7 +12,6 @@ namespace MMS_ADP631_FA1.Data
         public DbSet<Staff> Staff { get; set; }
         public DbSet<Report> Reports { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
