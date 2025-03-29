@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" onclick="location.href='@Url.Action("Index","Home")'">Home</a>
+                        <a class="nav-link active" href="#" onclick="location.href='@Url.Action("Index","Home")'">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Citizen">Citizen Registration</a>
@@ -104,15 +104,16 @@
         </div>
 
         <!-- Quick Access Links -->
+        <p class="h3" >Quick Actions</p>
         <div class="row mt-4">
             <div class="col-md-4">
-                <a href="/Citizen/Create" class="btn btn-primary btn-lg w-100">Add New Citizen</a>
+                <a href="/Citizen/Create" class="btn btn-secondary btn-lg w-100">Add New Citizen</a>
             </div>
             <div class="col-md-4">
-                <a href="/ServiceRequest/Create" class="btn btn-success btn-lg w-100">Create Service Request</a>
+                <a href="/ServiceRequest/Create" class="btn btn-secondary btn-lg w-100">Create Service Request</a>
             </div>
             <div class="col-md-4">
-                <a href="/Reports" class="btn btn-warning btn-lg w-100">View Pending Reports</a>
+                <a href="/Reports" class="btn btn-secondary btn-lg w-100">View Pending Reports</a>
             </div>
         </div>
 
