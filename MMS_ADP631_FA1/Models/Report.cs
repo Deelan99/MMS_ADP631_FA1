@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MMS_ADP631_FA1.Models
 {
@@ -9,13 +8,13 @@ namespace MMS_ADP631_FA1.Models
         public int ReportID { get; set; } // Primary Key
         public int CitizenID { get; set; } // Foreign Key
         [Required]
-        public string ReportType { get; set; }
+        public required string ReportType { get; set; }
         [Required]
-        public string Details { get; set; }
+        public required string Details { get; set; }
         public DateTime SubmissionDate { get; set; } = DateTime.Now;
         public string Status { get; set; } = "Under Review";
 
-        public Citizen Citizen { get; set; }
+        public Citizen? Citizen { get; set; }
 
     }
 }

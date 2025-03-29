@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 
@@ -16,7 +17,7 @@ namespace MyApp.Namespace
         // GET: Citizen
         public ActionResult Index()
         {
-            var citizens = _context.Citizens.ToList();
+            var citizens = _context.Citizens.ToListAsync();
             return View();
         }
 

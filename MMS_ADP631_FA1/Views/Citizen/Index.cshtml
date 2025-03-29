@@ -1,0 +1,36 @@
+@model List<MMS_ADP631_FA1.Models.Citizen>
+
+<h2>Citizens List</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No citizens found in the system.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var citizen in Model)
+            {
+                <tr>
+                    <td>@citizen.FullName</td>
+                    <td>@citizen.Email</td>
+                    <td>@citizen.PhoneNumber</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@citizen.CitizenID">View</a> |
+                        <a asp-action="Edit" asp-route-id="@citizen.CitizenID">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@citizen.CitizenID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

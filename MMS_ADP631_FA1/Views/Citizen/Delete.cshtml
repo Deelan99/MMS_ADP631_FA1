@@ -1,0 +1,14 @@
+@model MMS_ADP631_FA1.Models.Citizen
+
+<h2>Delete Citizen</h2>
+
+<h4>Are you sure you want to delete this citizen?</h4>
+
+<p><strong>Full Name:</strong> @Model.FullName</p>
+<p><strong>Email:</strong> @Model.Email</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CitizenID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
