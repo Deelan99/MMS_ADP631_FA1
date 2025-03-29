@@ -11,7 +11,7 @@ namespace MMS_ADP631_FA1.Models
         public required string ReportType { get; set; }
         [Required]
         public required string Details { get; set; }
-        public DateTime SubmissionDate { get; set; } = DateTime.Now;
+        public DateTime SubmissionDate { get; set; }
         public string Status { get; set; } = "Under Review";
 
         public Citizen? Citizen { get; set; }
