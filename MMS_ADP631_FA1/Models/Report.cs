@@ -8,9 +8,9 @@ namespace MMS_ADP631_FA1.Models
         public int ReportID { get; set; } // Primary Key
         public int CitizenID { get; set; } // Foreign Key
         [Required]
-        public required string ReportType { get; set; }
+        public string ReportType { get; set; }
         [Required]
-        public required string Details { get; set; }
+        public string Details { get; set; }
         public DateTime SubmissionDate { get; set; }
         public string Status { get; set; } = "Under Review";
 

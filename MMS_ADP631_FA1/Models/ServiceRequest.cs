@@ -9,8 +9,8 @@ namespace MMS_ADP631_FA1.Models
         public int CitizenID { get; set; } // Foreign key 
 
         [Required]
-        public required string ServiceType { get; set; }
-        public DateTime RequestDate { get; set; }
+        public string ServiceType { get; set; }
+        public DateTime RequestDate { get; set; } = DateTime.Now;
         public string Status { get; set; } = "Pending";
 
         public Citizen Citizen { get; set; }

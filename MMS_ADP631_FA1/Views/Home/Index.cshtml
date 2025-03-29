@@ -107,13 +107,21 @@
         <p class="h3" >Quick Actions</p>
         <div class="row mt-4">
             <div class="col-md-4">
-                <a href="/Citizen/Create" class="btn btn-secondary btn-lg w-100">Add New Citizen</a>
+                <button type="button" class="btn btn-secondary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#addCitizenModal">
+                    Add New Citizen
+                </button>
             </div>
+
             <div class="col-md-4">
-                <a href="/ServiceRequest/Create" class="btn btn-secondary btn-lg w-100">Create Service Request</a>
+                <button type="button" class="btn btn-secondary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#createServiceRequestModal">
+                    Create Service Request
+                </button>
             </div>
+
             <div class="col-md-4">
-                <a href="/Reports" class="btn btn-secondary btn-lg w-100">View Pending Reports</a>
+                <button type="button" class="btn btn-secondary  btn-lg w-100" data-bs-toggle="modal" data-bs-target="#viewReportModal">
+                View Pending Reports
+            </button>
             </div>
         </div>
 
@@ -140,5 +148,14 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Render the Citizen/Create.cshtml for modal -->
+    @await Html.PartialAsync("../Citizen/Create", new MMS_ADP631_FA1.Models.Citizen())
+
+    <!-- Render the ServiceRequest/Create.cshtml for modal -->
+    @await Html.PartialAsync("../ServiceRequest/Create", new Tuple<MMS_ADP631_FA1.Models.ServiceRequest, List<MMS_ADP631_FA1.Models.Citizen>>(new MMS_ADP631_FA1.Models.ServiceRequest(), Model.Item2))
+
+    <!-- Render the Reports/Details.cshtml for modal -->
+    @await Html.PartialAsync("../Reports/Details", new List<MMS_ADP631_FA1.Models.Report>())
 </body>
 </html>

@@ -24,7 +24,10 @@ namespace MMS_ADP631_FA1.Controllers
         // GET ServiceRequest/Create
         public IActionResult Create()
         {
-            return View();
+            var citizens = _context.Citizens.ToList();
+            var serviceRequest = new ServiceRequest();
+            var model = new Tuple<ServiceRequest, List<Citizen>>(serviceRequest, citizens);
+            return View(model);
         }
 
         // POST ServiceRequest/Create
