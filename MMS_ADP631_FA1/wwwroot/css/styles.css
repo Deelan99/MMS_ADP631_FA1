@@ -1,0 +1,103 @@
+﻿/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set body font, background, and text color */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #555; /* Dark grey text */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Global container for consistent layout */
+.container {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Styling for tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: #ffffff; /* White background for cells */
+}
+
+th {
+    background-color: #A8D08D; /* Soft lime green for headers */
+    color: #fff;
+    font-weight: bold;
+}
+
+td {
+    background-color: #F9F9F9; /* Light grey for data rows */
+}
+
+/* Header and Footer styles */
+h1, h2 {
+    color: #8B8D7A; /* Warm grey color */
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+    padding: 15px;
+    background-color: #A8D08D; /* Lime green */
+    color: white;
+}
+
+/* Button Styles */
+button, a {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: #A8D08D; /* Lime green */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+}
+
+    button:hover, a:hover {
+        background-color: #8CCF72; /* Darker lime green for hover effect */
+    }
+
+/* Links */
+a {
+    color: #A8D08D; /* Lime green for links */
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Form styling */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff; /* White background */
+    color: #333; /* Dark text */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #8B8D7A; /* Warm grey for labels */
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CDciOz2/4WcVtM0ZddbZTsoDeIdJUjjn+s/00dWxaXo=",
+  "Hash": "6YUyorVvypDeGDQFkbDU5EBe8z+59LaEmZTxRADBemk=",
   "Source": "MMS_ADP631_FA1",
   "BasePath": "_content/MMS_ADP631_FA1",
   "Mode": "Default",
@@ -15,6 +15,111 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": [
+    {
+      "Identity": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
+      "SourceId": "MMS_ADP631_FA1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\",
+      "BasePath": "_content/MMS_ADP631_FA1",
+      "RelativePath": "css/styles#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qhq2isa34s",
+      "Integrity": "Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/styles.css",
+      "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2130"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 29 Mar 2025 13:26:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco="
+        }
+      ]
+    },
+    {
+      "Route": "css/styles.qhq2isa34s.css",
+      "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2130"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 29 Mar 2025 13:26:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qhq2isa34s"
+        },
+        {
+          "Name": "label",
+          "Value": "css/styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ymvxd9pp3Mn9HsZQZRGUSUG+6tXxVLAKKGWNtOczQco="
+        }
+      ]
+    }
+  ]
 }
