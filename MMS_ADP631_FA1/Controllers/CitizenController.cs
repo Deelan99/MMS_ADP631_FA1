@@ -126,7 +126,7 @@ namespace MyApp.Namespace
         }
         #endregion
 
-        #region Citizen/Details
+        #region Citizen/Details/{id}
         // GET Citizen/Details/{id}
         // This method returns JSON instead of a View:
         public IActionResult Details(int id)

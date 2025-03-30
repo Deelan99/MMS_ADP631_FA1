@@ -98,7 +98,16 @@ namespace MMS_ADP631_FA1.Controllers
             {
                 return NotFound();
             }
-            return View(staffMember);
+
+            return Json(new
+            {
+                fullName = staffMember.FullName,
+                department = staffMember.Department,
+                position = staffMember.Position,
+                phoneNumber = staffMember.PhoneNumber,
+                email = staffMember.Email,
+                hireDate = staffMember.HireDate.ToString("dd/MM/yyyy")
+            }); 
         }
         #endregion
 
