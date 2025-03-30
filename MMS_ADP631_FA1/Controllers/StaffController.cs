@@ -65,27 +65,17 @@ namespace MMS_ADP631_FA1.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(staff);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    if (!_context.Staff.Any(s => s.StaffID == id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(staff);
+                _context.SaveChanges();
+
+                return Ok();
             }
-            return View(staff);
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
 

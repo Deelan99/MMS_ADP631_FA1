@@ -69,13 +69,13 @@ namespace MyApp.Namespace
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Citizen citizen)
         {
+            if (id != citizen.CitizenID)
+            {
+                return NotFound();
+            }
+
             try
             {
-                if (id != citizen.CitizenID)
-                {
-                    return NotFound();
-                }
-
                 _context.Update(citizen);
                 _context.SaveChanges();
 
