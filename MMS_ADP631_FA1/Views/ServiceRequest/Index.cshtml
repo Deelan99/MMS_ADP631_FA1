@@ -71,9 +71,9 @@
                             <td>@request.ServiceType</td>
                             <td>@request.Status</td>
                             <td>
-                                <a asp-action="Details" asp-route-id="@request.RequestID">View</a> |
-                                <a asp-action="Edit" asp-route-id="@request.RequestID">Edit</a> |
-                                <a asp-action="Delete" asp-route-id="@request.RequestID">Delete</a>
+                                <a href="/ServiceRequest/Details/@request.RequestID" class="btn" style="background-color: #54a2bf">Details</a> |
+                                <a href="/ServiceRequest/Edit/@request.RequestID" class="btn" style="background-color: #31cd54">Edit</a> |
+                                <a href="/ServiceRequest/Delete/@request.RequestID" class="btn" style="background-color: #f52836">Delete</a>
                             </td>
                         </tr>
                     }

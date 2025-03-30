@@ -73,9 +73,9 @@
                             <td>@report.Details</td>
                             <td>@report.Status</td>
                             <td>
-                                <a asp-action="Details" asp-route-id="@report.ReportID">View</a> |
-                                <a asp-action="Edit" asp-route-id="@report.ReportID">Edit</a> |
-                                <a asp-action="Delete" asp-route-id="@report.ReportID">Delete</a>
+                                <a href="/Report/Details/@report.CitizenID" class="btn" style="background-color: #54a2bf">Details</a> |
+                                <a href="/Report/Edit/@report.CitizenID" class="btn" style="background-color: #31cd54">Edit</a> |
+                                <a href="/Report/Delete/@report.CitizenID" class="btn" style="background-color: #f52836">Delete</a>
                             </td>
                         </tr>
                     }
