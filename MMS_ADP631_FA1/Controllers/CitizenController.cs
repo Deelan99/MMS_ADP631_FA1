@@ -117,10 +117,23 @@ namespace MyApp.Namespace
         [HttpPost]
         public IActionResult DeleteConfirmation(int id)
         {
-            var citizen = _context.Citizens.Find(id);
-            _context.Citizens.Remove(citizen);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var citizen = _context.Citizens.Find(id);
+                if (citizen == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Citizens.Remove(citizen);
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
 

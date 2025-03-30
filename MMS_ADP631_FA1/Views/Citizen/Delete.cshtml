@@ -6,6 +6,7 @@
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteCitizenModal" tabindex="-1" role="dialog" aria-labelledby="deleteCitizenModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
+        @Html.AntiForgeryToken()
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteCitizenModalLabel">Delete Citizen</h5>
@@ -16,8 +17,11 @@
                 <input type="hidden" id="deleteCitizenId">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                <!-- Hidden Anti-Forgery Token -->
+                <form id="deleteCitizenForm">
+                    @Html.AntiForgeryToken()
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                </form>
             </div>
         </div>
     </div>
@@ -35,11 +39,23 @@
             .catch(error => console.error("Error loading citizen data:", error));
     }
 
-    function confirmDelete() {
+             function confirmDelete() {
         const citizenId = document.getElementById("deleteCitizenId").value;
-        fetch(`/Citizen/Delete/${citizenId}`, {
-            method: "POST"
-        }).then(response => location.reload())
-          .catch(error => console.error("Error deleting citizen:", error));
+        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+        fetch(`/Citizen/DeleteConfirmation/${citizenId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `__RequestVerificationToken=${token}`
+        }).then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                console.error("Failed to delete citizen.");
+            }
+        }).catch(error => console.error("Error deleting citizen:", error));
     }
+
 </script>
