@@ -69,33 +69,22 @@ namespace MyApp.Namespace
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Citizen citizen)
         {
-            if (id != citizen.CitizenID)
+            try
             {
-                return NotFound();
-            }
+                if (id != citizen.CitizenID)
+                {
+                    return NotFound();
+                }
 
-            if (ModelState.IsValid)
+                _context.Update(citizen);
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception)
             {
-                try
-                {
-                    _context.Update(citizen);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    if (!_context.Citizens.Any(c => c.CitizenID == id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return StatusCode(500, "Internal server error");
             }
-
-            return View(citizen);
         }
         #endregion
 
