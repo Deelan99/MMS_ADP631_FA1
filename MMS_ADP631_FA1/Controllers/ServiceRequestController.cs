@@ -35,14 +35,24 @@ namespace MMS_ADP631_FA1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ServiceRequest serviceRequest)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(serviceRequest);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(serviceRequest);
+            ModelState.Remove("Citizen"); // This is not needed
 
+            // If the passed Citizen ID is 0
+            if (serviceRequest.CitizenID == 0)
+            {
+                ModelState.AddModelError("CitizenID", "Please select a citizen.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var citizens = _context.Citizens.ToList();
+                var viewModel = new Tuple<ServiceRequest, List<Citizen>>(serviceRequest, citizens);
+                return View(viewModel);
+            }
+
+            _context.ServiceRequests.Add(serviceRequest);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
         #endregion
 

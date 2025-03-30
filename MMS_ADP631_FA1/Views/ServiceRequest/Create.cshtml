@@ -13,6 +13,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="/ServiceRequest/Create">
+                    @Html.AntiForgeryToken()
                     <!-- Select list of current citizens the request is for -->
                     <div class="mb-3">
                         <select class="form-select" id="CitizenID" name="CitizenID" required>
@@ -31,7 +32,6 @@
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -43,8 +43,7 @@
     // When the modal is closed/cancelled, reset the dropdown selection
     var createServiceRequestModal = document.getElementById('createServiceRequestModal');
     createServiceRequestModal.addEventListener('hidden.bs.modal', function () {
-        document.getElementById('CitizenID').value = '';
-
+        document.getElementById('CitizenID').selectedIndex = 0;
         document.getElementById('ServiceType').value = '';
-    });
+    });  
 </script>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace MMS_ADP631_FA1.Models
 {
@@ -13,6 +14,7 @@ namespace MMS_ADP631_FA1.Models
         public DateTime RequestDate { get; set; } = DateTime.Now;
         public string Status { get; set; } = "Pending";
 
+        [BindNever]
         public Citizen Citizen { get; set; }
     }
 }

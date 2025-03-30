@@ -16,6 +16,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="/Citizen/Create">
+                    @Html.AntiForgeryToken()
                     <div class="mb-3">
                         <input placeholder="Full Name" type="text" class="form-control" id="FullName" name="FullName" required />
                     </div>
@@ -37,7 +38,6 @@
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Create</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
