@@ -113,15 +113,27 @@ namespace MMS_ADP631_FA1.Controllers
             return View(staffMember);
         }
 
-        // POST Staff/Delete/{id}
-        [HttpPost, ActionName("Delete")]
+        // POST Staff/DeleteConfirmation/{id}
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmation(int id)
         {
-            var staffMember = _context.Staff.Find(id);
-            _context.Staff.Remove(staffMember);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var staffMember = _context.Staff.Find(id);
+                if (staffMember == null)
+                {
+                    return NotFound();
+                }
+                _context.Staff.Remove(staffMember);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
 

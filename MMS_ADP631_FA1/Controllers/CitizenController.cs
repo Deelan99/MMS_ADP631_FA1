@@ -104,6 +104,7 @@ namespace MyApp.Namespace
 
         // POST Citizen/Delete/{id}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmation(int id)
         {
             try
