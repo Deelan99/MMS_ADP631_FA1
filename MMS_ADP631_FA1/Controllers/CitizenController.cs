@@ -126,15 +126,21 @@ namespace MyApp.Namespace
 
         #region Citizen/Details
         // GET Citizen/Details/{id}
+        // This method returns JSON instead of a View:
         public IActionResult Details(int id)
         {
             var citizen = _context.Citizens.Find(id);
-            if (citizen == null)
-            {
-                return NotFound();
-            }
+            if (citizen == null) return NotFound();
 
-            return View(citizen);
+            return Json(new
+            {
+                fullName = citizen.FullName,
+                address = citizen.Address,
+                phoneNumber = citizen.PhoneNumber,
+                email = citizen.Email,
+                dateOfBirth = citizen.DateOfBirth?.ToString("dd/MM/yyyy"),
+                registrationDate = citizen.RegistrationDate.ToString("dd/MM/yyyy")
+            });
         }
         #endregion
     }
