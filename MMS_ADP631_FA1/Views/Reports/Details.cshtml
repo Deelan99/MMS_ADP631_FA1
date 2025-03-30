@@ -8,48 +8,36 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <table class="table">
-                    <tbody>
-                        @if (Model == null || !Model.Any())
-                        {
-                            <p class="h2">There are no Pending reports found in the system.</p>
-                        }
-                        else
-                        {
-                            <thead>
+                @if (Model == null || !Model.Any())
+                {
+                    <p class="h2">There are no Pending reports found in the system.</p>
+                }
+                else
+                {
+                    <p class="h3">Pending Reports in the system</p>
+                    <br />
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Submission Date</th>
+                                <th>Report Type</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var report in Model)
+                            {
                                 <tr>
-                                    <th>Submission Date</th>
-                                    <th>Report Type</th>
-                                    <th>Details</th>
-                                    <th>Status</th>
+                                    <td>@report.SubmissionDate</td>
+                                    <td>@report.ReportType</td>
+                                    <td>@report.Details</td>
+                                    <td>@report.Status</td>
                                 </tr>
-                            </thead>
-                            <p class="h2">Pending Reports in the system</p>
-                            <br />
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Submission Date</th>
-                                        <th>Report Type</th>
-                                        <th>Details</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var report in Model)
-                                    {
-                                        <tr>
-                                            <td>@report.SubmissionDate</td>
-                                            <td>@report.ReportType</td>
-                                            <td>@report.Details</td>
-                                            <td>@report.Status</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        }
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                }
             </div>
         </div>
     </div>

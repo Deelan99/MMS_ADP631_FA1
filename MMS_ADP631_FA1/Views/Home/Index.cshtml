@@ -1,4 +1,4 @@
-﻿@model Tuple<List<MMS_ADP631_FA1.Models.ServiceRequest>, List<MMS_ADP631_FA1.Models.Citizen>, List<MMS_ADP631_FA1.Models.Staff>>
+﻿@model Tuple<List<MMS_ADP631_FA1.Models.ServiceRequest>, List<MMS_ADP631_FA1.Models.Citizen>, List<MMS_ADP631_FA1.Models.Staff>, List<MMS_ADP631_FA1.Models.Report>>
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -183,6 +183,6 @@
     @await Html.PartialAsync("../ServiceRequest/Create", new Tuple<MMS_ADP631_FA1.Models.ServiceRequest, List<MMS_ADP631_FA1.Models.Citizen>>(new MMS_ADP631_FA1.Models.ServiceRequest(), Model.Item2))
 
     <!-- Render the Reports/Details.cshtml for modal -->
-    @await Html.PartialAsync("../Reports/Details", new List<MMS_ADP631_FA1.Models.Report>())
+    @await Html.PartialAsync("../Reports/Details", Model.Item4)
 </body>
 </html>
