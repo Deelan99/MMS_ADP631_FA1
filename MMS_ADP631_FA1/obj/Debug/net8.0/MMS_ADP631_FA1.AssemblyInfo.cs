@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMS_ADP631_FA1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b0b3aff9845d7f8a3d5e9e84948b24fef6c9645")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e95099fb630b685daa4ef9b766b3baec162063fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMS_ADP631_FA1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMS_ADP631_FA1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

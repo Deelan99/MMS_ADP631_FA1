@@ -36,10 +36,18 @@ namespace MyApp.Namespace
             {
                 _context.Add(citizen);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
 
-            return View(citizen);
+                TempData["SuccessfulMessage"] = "New Citizen registered successfully";
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "There was an error registering the Citizen. Please try again.";
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
+
+            }
         }
         #endregion
 

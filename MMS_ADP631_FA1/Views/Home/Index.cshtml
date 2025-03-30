@@ -45,6 +45,23 @@
     </nav>
 
     <div class="container mt-5 flex-grow-1">
+        <!-- Response messages from adding a new citizen or creating a service request -->
+        @if (TempData["SuccessfulMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessfulMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning alert-dismissable fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         <!-- Welcome Section -->
         <div class="row">
             <div class="col-12">
@@ -148,6 +165,16 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        setTimeout(function () {
+                let alert = document.querySelector(".alert");
+                if (alert) {
+                    alert.classList.remove("show");
+                    alert.classList.add("fade");
+                    setTimeout(() => alert.remove(), 500);
+                }
+            }, 5000);
+    </script>
 
     <!-- Render the Citizen/Create.cshtml for modal -->
     @await Html.PartialAsync("../Citizen/Create", new MMS_ADP631_FA1.Models.Citizen())

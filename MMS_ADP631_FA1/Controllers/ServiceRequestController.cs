@@ -43,16 +43,20 @@ namespace MMS_ADP631_FA1.Controllers
                 ModelState.AddModelError("CitizenID", "Please select a citizen.");
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var citizens = _context.Citizens.ToList();
-                var viewModel = new Tuple<ServiceRequest, List<Citizen>>(serviceRequest, citizens);
-                return View(viewModel);
+                _context.ServiceRequests.Add(serviceRequest);
+                TempData["SuccessfulMessage"] = "Service Request created successfully";
+                _context.SaveChanges();
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "There was an error creating the Service Request. Please try again.";
+
+                return RedirectToAction("Index", "Home");
             }
 
-            _context.ServiceRequests.Add(serviceRequest);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
         #endregion
 

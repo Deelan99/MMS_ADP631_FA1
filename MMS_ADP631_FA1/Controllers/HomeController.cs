@@ -20,7 +20,6 @@ namespace MMS_ADP631_FA1.Controllers
             var staff = _context.Staff.ToList();
 
             var home = new Tuple<List<ServiceRequest>, List<Citizen>, List<Staff>>(serviceRequests, citizens, staff);
-
             return View(home);
         }
     }

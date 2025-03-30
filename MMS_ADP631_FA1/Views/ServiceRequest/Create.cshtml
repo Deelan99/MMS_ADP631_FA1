@@ -14,6 +14,7 @@
             <div class="modal-body">
                 <form method="post" action="/ServiceRequest/Create">
                     @Html.AntiForgeryToken()
+
                     <!-- Select list of current citizens the request is for -->
                     <div class="mb-3">
                         <select class="form-select" id="CitizenID" name="CitizenID" required>
