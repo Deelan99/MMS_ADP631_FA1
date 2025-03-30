@@ -137,14 +137,28 @@ namespace MMS_ADP631_FA1.Controllers
         }
 
         // POST ServiceRequest/Delete/{id}
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmation(int id)
         {
-            var serviceRequest = _context.ServiceRequests.Find(id);
-            _context.ServiceRequests.Remove(serviceRequest);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var serviceRequest = _context.ServiceRequests.Find(id);
+                if (serviceRequest == null)
+                {
+                    return NotFound();
+                }
+
+                _context.ServiceRequests.Remove(serviceRequest);
+                _context.SaveChanges();
+
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
     }
