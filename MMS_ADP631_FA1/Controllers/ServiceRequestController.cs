@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 
@@ -96,13 +97,29 @@ namespace MMS_ADP631_FA1.Controllers
         // GET ServiceRequest/Details/{id}
         public IActionResult Details(int id)
         {
-            var serviceRequest = _context.ServiceRequests.Find(id);
+            var serviceRequest = _context.ServiceRequests
+                .Include(sr => sr.Citizen)
+                .FirstOrDefault(sr => sr.RequestID == id);
+
             if (serviceRequest == null)
             {
                 return NotFound();
             }
 
-            return View(serviceRequest);
+            if (serviceRequest.Citizen == null)
+            {
+                return BadRequest("Citizen details not found for this service request.");
+            }
+
+            return Json(new
+            {
+                serviceType = serviceRequest.ServiceType,
+                requestDate = serviceRequest.RequestDate,
+                status = serviceRequest.Status,
+                citizenFullName = serviceRequest.Citizen.FullName,
+                citizenEmail = serviceRequest.Citizen.Email,
+                citizenPhoneNumber = serviceRequest.Citizen.PhoneNumber
+            });
         }
         #endregion
 
