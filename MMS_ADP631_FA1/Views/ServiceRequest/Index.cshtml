@@ -72,7 +72,7 @@
                             <td>@request.Status</td>
                             <td>
                                 <a href="#" class="btn text-white" style="background-color: #54a2bf" data-bs-toggle="modal" data-bs-target="#serviceRequestDetailsModal" onclick="loadServiceRequestDetails(@request.RequestID)">Details</a> |
-                                <a href"#" class="btn text-white" style="background-color: #ffc107" data-bs-toggle="modal" data-bs-target="#updateStatusServiceRequestModal" onclick="loadServiceRequestForStatusUpdate(@request.RequestID)">Update Status</a> |
+                                <a href="#" class="btn text-white" style="background-color: #ffc107" data-bs-toggle="modal" data-bs-target="#updateStatusModal" onclick="loadServiceRequestForUpdate(@Html.Raw(request.RequestID))">Update Status</a> |
                                 <a href="#" class="btn text-white" style="background-color: #f52836" data-bs-toggle="modal" data-bs-target="#deleteServiceRequestModal" onclick="loadServiceRequestForDelete(@request.RequestID)">Delete</a>
                             </td>
                         </tr>

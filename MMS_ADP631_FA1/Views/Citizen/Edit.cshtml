@@ -77,11 +77,6 @@
         const formData = new FormData(this); // Collect the form data
         const token = document.querySelector('input[name="__RequestVerificationToken"]').value; // CSRF token
 
-        // Log the form data for debugging
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-
         const citizenId = document.getElementById("editCitizenId").value; // Get CitizenID
 
         // Send a POST request to update the citizen

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 
@@ -74,22 +75,31 @@ namespace MMS_ADP631_FA1.Controllers
         }
 
         // POST ServiceRequest/UpdateStatus/{id}
-        [HttpPost]
+        [HttpPost, ]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateStatus(int id, ServiceRequest serviceRequest)
+        public IActionResult UpdateStatus(int id, [Bind("RequestID,Status")] ServiceRequest serviceRequest)
         {
             if (id != serviceRequest.RequestID)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            var existingRequest = _context.ServiceRequests.Find(id);
+            if (existingRequest == null)
             {
-                _context.Add(serviceRequest);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            return View(serviceRequest);
+
+            try
+            {
+                existingRequest.Status = serviceRequest.Status;
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
 
