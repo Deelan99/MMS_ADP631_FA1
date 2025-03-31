@@ -18,8 +18,7 @@ namespace MMS_ADP631_FA1.Controllers
         // GET Service Request
         public ActionResult Index()
         {
-            //var serviceRequests = _context.ServiceRequests.ToList();
-            //return View(serviceRequests);
+            TempData.Remove("Home");
             var serviceRequests = _context.ServiceRequests.ToList();
             var citizens = _context.Citizens.ToList();
             var model = new Tuple<List<ServiceRequest>, List<Citizen>>(serviceRequests, citizens);
@@ -58,11 +57,17 @@ namespace MMS_ADP631_FA1.Controllers
             else
             {
                 TempData["ErrorMessage"] = "There was an error creating the Service Request. Please try again.";
-
-                return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Index", "Home");
+            if (TempData["Home"] != null && (bool)TempData["Home"] == true)
+            {
+                TempData.Remove("Home");
+                return RedirectToAction("Index", "Home"); 
+            }
+
+            return RedirectToAction(nameof(Index));
+
+
         }
         #endregion
 

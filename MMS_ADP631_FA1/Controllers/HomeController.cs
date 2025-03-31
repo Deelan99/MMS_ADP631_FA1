@@ -15,6 +15,9 @@ namespace MMS_ADP631_FA1.Controllers
 
         public IActionResult Index()
         {
+            // This is to assist with the redirect logic of creating a new Citizen or Service Request
+            TempData["Home"] = true;
+
             var serviceRequests = _context.ServiceRequests.ToList();
             var citizens = _context.Citizens.ToList();
             var staff = _context.Staff.ToList();

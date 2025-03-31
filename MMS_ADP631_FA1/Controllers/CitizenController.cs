@@ -16,6 +16,7 @@ namespace MyApp.Namespace
         // GET: Citizen
         public ActionResult Index()
         {
+            TempData.Remove("Home");
             var citizens = _context.Citizens.ToList();
             return View(citizens);
         }
@@ -38,15 +39,19 @@ namespace MyApp.Namespace
                 _context.SaveChanges();
 
                 TempData["SuccessfulMessage"] = "New Citizen registered successfully";
-                return RedirectToAction("Index", "Home");
             }
             else
             {
                 TempData["ErrorMessage"] = "There was an error registering the Citizen. Please try again.";
-                //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Index", "Home");
-
             }
+
+            if (TempData["Home"] != null && (bool)TempData["Home"] == true)
+            {
+                TempData.Remove("Home");
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction(nameof(Index));
         }
         #endregion
 
