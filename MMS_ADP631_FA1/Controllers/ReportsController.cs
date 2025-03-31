@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 
@@ -19,23 +20,6 @@ namespace MMS_ADP631_FA1.Controllers
             var reports = _context.Reports.ToList();
             return View(reports);
         }
-
-        // GET Report/Details
-        public IActionResult Details(string status)
-        {
-            if (status == "Pending")
-            {
-                var pendingReports = _context.Reports.Where(r => r.Status == "Pending").ToList();
-                return View(pendingReports);
-
-            }
-            else
-            {
-                var reports = _context.Reports.ToList();
-                return View(reports);
-            }
-        }
-
 
         #region Report/Create
         // GET Report/Create
@@ -115,6 +99,42 @@ namespace MMS_ADP631_FA1.Controllers
             _context.Reports.Remove(report);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region Reports/Details
+        [HttpGet("Reports/PendingReports")]
+        public IActionResult Details(string? status)
+        {
+            var reports = _context.Reports.Where(r => r.Status == "Pending").ToList();
+            return PartialView("_ReportDetails", reports);
+        }
+
+        // This method will return a JSON and not a view
+        [HttpGet("Reports/Details/{id}")]
+        public IActionResult Details(int id)
+        {
+            var report = _context.Reports
+                .Include(r => r.Citizen)
+                .FirstOrDefault(r => r.ReportID == id);
+
+            if (report == null) return NotFound();
+
+            if (report.Citizen == null)
+            {
+                return BadRequest("Citizen details not found for this reports details.");
+            }
+
+            return Json(new
+            {
+                submissionDate = report.SubmissionDate.ToString("dd/MM/yyyy"),
+                reportType = report.ReportType,
+                details = report.Details,
+                status = report.Status,
+                citizenFullName = report.Citizen.FullName,
+                citizenEmail = report.Citizen.Email,
+                citizenPhoneNumber = report.Citizen.PhoneNumber
+            });
         }
         #endregion
 
