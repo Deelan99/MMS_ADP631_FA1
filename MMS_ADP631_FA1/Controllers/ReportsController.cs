@@ -21,10 +21,19 @@ namespace MMS_ADP631_FA1.Controllers
         }
 
         // GET Report/Details
-        public IActionResult Details()
+        public IActionResult Details(string status)
         {
-            var pendingReports = _context.Reports.Where(r => r.Status == "Pending").ToList();
-            return View(pendingReports);
+            if (status == "Pending")
+            {
+                var pendingReports = _context.Reports.Where(r => r.Status == "Pending").ToList();
+                return View(pendingReports);
+
+            }
+            else
+            {
+                var reports = _context.Reports.ToList();
+                return View(reports);
+            }
         }
 
 
