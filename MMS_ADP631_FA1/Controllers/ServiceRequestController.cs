@@ -18,8 +18,12 @@ namespace MMS_ADP631_FA1.Controllers
         // GET Service Request
         public ActionResult Index()
         {
+            //var serviceRequests = _context.ServiceRequests.ToList();
+            //return View(serviceRequests);
             var serviceRequests = _context.ServiceRequests.ToList();
-            return View(serviceRequests);
+            var citizens = _context.Citizens.ToList();
+            var model = new Tuple<List<ServiceRequest>, List<Citizen>>(serviceRequests, citizens);
+            return View(model);
         }
 
         #region ServiceRequest/Create

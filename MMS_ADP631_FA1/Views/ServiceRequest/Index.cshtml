@@ -1,4 +1,4 @@
-@model List<MMS_ADP631_FA1.Models.ServiceRequest>
+@model Tuple<List<MMS_ADP631_FA1.Models.ServiceRequest>, List<MMS_ADP631_FA1.Models.Citizen>>
 
 @{
     ViewData["Title"] = "Service Requests";
@@ -73,7 +73,7 @@
             </button>
         </div>
 
-        @if (Model == null || !Model.Any())
+        @if (Model.Item1 == null)
         {
             <p class="h2">There are no @ViewData["Title"] found in the system.</p>
         }
@@ -89,7 +89,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var request in Model)
+                    @foreach (var request in Model.Item1)
                     {
                         <tr>
                             <td>@request.RequestDate</td>
@@ -121,7 +121,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Render the ServiceRequest/Create.cshtml for modal -->
-   @*  @await Html.PartialAsync("../ServiceRequest/Create", new MMS_ADP631_FA1.Models.ServiceRequest()) *@
+    @await Html.PartialAsync("../ServiceRequest/Create", new Tuple<MMS_ADP631_FA1.Models.ServiceRequest, List<MMS_ADP631_FA1.Models.Citizen>>(new MMS_ADP631_FA1.Models.ServiceRequest(), Model.Item2))
 
     <!-- Render the ServiceRequest/Details.cshtml for modal -->
     @await Html.PartialAsync("../ServiceRequest/Details", new MMS_ADP631_FA1.Models.ServiceRequest())
