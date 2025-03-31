@@ -36,9 +36,15 @@ namespace MMS_ADP631_FA1.Controllers
             {
                 _context.Add(staff);
                 _context.SaveChanges();
+
+                TempData["SuccessfulMessage"] = "New Staff Member created successfully";
                 return RedirectToAction(nameof(Index));
             }
-            return View(staff);
+            else
+            {
+                TempData["ErrorMessage"] = "There was an error creating the Staff Member. Please try again.";
+                return RedirectToAction(nameof(Index));
+            }
 
         }
         #endregion

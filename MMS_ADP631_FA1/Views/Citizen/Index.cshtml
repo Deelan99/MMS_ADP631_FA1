@@ -49,13 +49,37 @@
     <!-- Content -->
     <div class="container mt-5 flex-grow-1">
 
+        <!-- Response messages from adding a new citizen -->
+        @if (TempData["SuccessfulMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessfulMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning alert-dismissable fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <!-- Logic to create new citizen -->
+        <div class="d-flex align-items-center justify-content-between">
+            <p class="h2">Citizens in the system</p>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addCitizenModal">
+                Create New
+            </button>
+        </div>
+
         @if (Model == null || !Model.Any())
         {
             <p class="h2">There are no citizens found in the system.</p>
         }
         else
         {
-        <p class="h2">Citizens in the system</p>
         <br/>
             <table class="table">
                 <thead>
@@ -75,7 +99,7 @@
                             <td>@citizen.PhoneNumber</td>
                             <td>
                                 <a href="#" class="btn text-white" style="background-color: #54a2bf" data-bs-toggle="modal" data-bs-target="#citizenDetailsModal" onclick="loadCitizenDetails(@citizen.CitizenID)">Details</a> |
-                                <a href"#" class="btn text-white" style="background-color: #31cd54" data-bs-toggle="modal" data-bs-target="#editCitizenModal" onclick="loadCitizenForEdit(@citizen.CitizenID)">Edit</a> |
+                                <a href"#" class="btn text-white" style="background-color: #e3aa75" data-bs-toggle="modal" data-bs-target="#editCitizenModal" onclick="loadCitizenForEdit(@citizen.CitizenID)">Edit</a> |
                                 <a href="#" class="btn text-white" style="background-color: #f52836" data-bs-toggle="modal" data-bs-target="#deleteCitizenModal" onclick="loadCitizenForDelete(@citizen.CitizenID)">Delete</a>
                             </td>
                         </tr>
@@ -96,6 +120,9 @@
             </p>
         </div>
     </footer>
+
+    <!-- Render the Citizen/Create.cshtml for modal -->
+    @await Html.PartialAsync("../Citizen/Create", new MMS_ADP631_FA1.Models.Citizen())
 
     <!-- Render the Citizen/Details.cshtml for modal -->
     @await Html.PartialAsync("../Citizen/Details", new MMS_ADP631_FA1.Models.Citizen())

@@ -38,7 +38,6 @@ namespace MyApp.Namespace
                 _context.SaveChanges();
 
                 TempData["SuccessfulMessage"] = "New Citizen registered successfully";
-                //return RedirectToAction(nameof(Index));
                 return RedirectToAction("Index", "Home");
             }
             else

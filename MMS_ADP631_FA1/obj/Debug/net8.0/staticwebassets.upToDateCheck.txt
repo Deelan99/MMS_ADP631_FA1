@@ -1,2 +1,1 @@
 wwwroot\css\styles.css
-wwwroot\js\report.js

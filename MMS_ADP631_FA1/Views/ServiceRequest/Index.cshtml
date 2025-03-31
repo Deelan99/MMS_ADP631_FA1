@@ -47,13 +47,38 @@
 
     <!-- Content -->
     <div class="container mt-5 flex-grow-1">
+
+        <!-- Response messages from adding a new service request -->
+        @if (TempData["SuccessfulMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessfulMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning alert-dismissable fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <!-- Logic to create new service request -->
+        <div class="d-flex align-items-center justify-content-between">
+            <p class="h2">@ViewData["Title"] in the system</p>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#createServiceRequestModal">
+                Create New
+            </button>
+        </div>
+
         @if (Model == null || !Model.Any())
         {
             <p class="h2">There are no @ViewData["Title"] found in the system.</p>
         }
         else
         {
-            <p class="h2">@ViewData["Title"] in the system</p>
             <br />
             <table class="table">
                 <thead>
@@ -72,7 +97,7 @@
                             <td>@request.Status</td>
                             <td>
                                 <a href="#" class="btn text-white" style="background-color: #54a2bf" data-bs-toggle="modal" data-bs-target="#serviceRequestDetailsModal" onclick="loadServiceRequestDetails(@request.RequestID)">Details</a> |
-                                <a href="#" class="btn text-white" style="background-color: #ffc107" data-bs-toggle="modal" data-bs-target="#updateStatusModal" onclick="loadServiceRequestForUpdate(@Html.Raw(request.RequestID))">Update Status</a> |
+                                <a href="#" class="btn text-white" style="background-color: #e3aa75" data-bs-toggle="modal" data-bs-target="#updateStatusModal" onclick="loadServiceRequestForUpdate(@Html.Raw(request.RequestID))">Update Status</a> |
                                 <a href="#" class="btn text-white" style="background-color: #f52836" data-bs-toggle="modal" data-bs-target="#deleteServiceRequestModal" onclick="loadServiceRequestForDelete(@request.RequestID)">Delete</a>
                             </td>
                         </tr>
@@ -94,6 +119,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Render the ServiceRequest/Create.cshtml for modal -->
+   @*  @await Html.PartialAsync("../ServiceRequest/Create", new MMS_ADP631_FA1.Models.ServiceRequest()) *@
 
     <!-- Render the ServiceRequest/Details.cshtml for modal -->
     @await Html.PartialAsync("../ServiceRequest/Details", new MMS_ADP631_FA1.Models.ServiceRequest())

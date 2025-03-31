@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
-      "Id": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\js\\report.js",
-      "PackagePath": "staticwebassets\\js\\report.js"
-    },
-    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MMS_ADP631_FA1.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

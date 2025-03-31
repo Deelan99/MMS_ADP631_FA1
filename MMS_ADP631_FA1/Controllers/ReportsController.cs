@@ -17,16 +17,23 @@ namespace MMS_ADP631_FA1.Controllers
         // GET Report
         public IActionResult Index()
         {
-            ViewBag.StaffList = _context.Staff.ToList();
+            //ViewBag.StaffList = _context.Staff.ToList();
+            //var reports = _context.Reports.ToList();
+            //return View(reports);
+            var staff = _context.Staff.ToList();
             var reports = _context.Reports.ToList();
-            return View(reports);
+            var model = new Tuple<List<Report>, List<Staff>>(reports, staff);
+            return View(model); // ✅ Pass the expected Tuple
         }
 
         #region Report/Create
         // GET Report/Create
         public IActionResult Create()
         {
-            return View();
+            var staff = _context.Staff.ToList();
+            var reports = _context.Reports.ToList();
+            var model = new Tuple<List<Report>, List<Staff>>(reports ?? new List<Report>(), staff ?? new List<Staff>());
+            return View(model);
         }
 
         // POST Report/Create
@@ -37,11 +44,16 @@ namespace MMS_ADP631_FA1.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(report);
+                TempData["SuccessfulMessage"] = "Report created successfully";
                 _context.SaveChanges();
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "There was an error creating the report. Please try again.";
                 return RedirectToAction(nameof(Index));
             }
+            return RedirectToAction(nameof(Index));
 
-            return View();
         }
         #endregion
 

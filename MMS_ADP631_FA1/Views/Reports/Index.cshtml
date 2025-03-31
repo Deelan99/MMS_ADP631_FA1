@@ -1,4 +1,4 @@
-@model List<MMS_ADP631_FA1.Models.Report>
+@model Tuple<List<MMS_ADP631_FA1.Models.Report>, List<MMS_ADP631_FA1.Models.Staff>>
 
 @{
     ViewData["Title"] = "Reports";
@@ -48,13 +48,38 @@
 
     <!-- Content -->
     <div class="container mt-5 flex-grow-1">
-        @if (Model == null || !Model.Any())
+
+        <!-- Response messages from adding a new report -->
+        @if (TempData["SuccessfulMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessfulMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning alert-dismissable fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <!-- Logic to create new report -->
+        <div class="d-flex align-items-center justify-content-between">
+            <p class="h2">@ViewData["Title"] in the system</p>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addReportModal">
+                Create New
+            </button>
+        </div>
+
+        @if (Model.Item1 == null)
         {
             <p class="h2">There are no @ViewData["Title"] found in the system.</p>
         }
         else
-        {
-            <p class="h2">@ViewData["Title"] in the system</p>
+        {   
             <br />
             <table class="table">
                 <thead>
@@ -64,7 +89,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var report in Model)
+                    @foreach (var report in Model.Item1)
                     {
                         <!-- Render the Reports/ReviewReport.cshtml for modal -->
                         @await Html.PartialAsync("../Reports/ReviewReport", report)
@@ -93,6 +118,9 @@
             </p>
         </div>
     </footer>
+
+    <!-- Render the Reports/Create.cshtml for modal -->
+    @await Html.PartialAsync("../Reports/Create", new Tuple<List<MMS_ADP631_FA1.Models.Report>, List<MMS_ADP631_FA1.Models.Staff>>(Model.Item1, Model.Item2))
 
     <!-- Render the Reports/Details.cshtml for modal -->
     @await Html.PartialAsync("../Reports/Details", new MMS_ADP631_FA1.Models.Report())
