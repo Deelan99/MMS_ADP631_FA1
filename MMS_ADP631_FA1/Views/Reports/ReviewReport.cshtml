@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form id="reviewReportForm">
                     @Html.AntiForgeryToken()
-                    <input type="hidden" id="reportId" name="ReportID">
+                    <input type="hidden" id="reportId" name="ReportID" value="@Model.ReportID">
 
                     <div class="mb-3">
                         <label class="form-label">Report Type</label>
@@ -28,23 +28,6 @@
                             <option value="Resolved">Resolved</option>
                             <option value="In Progress">In Progress</option>
                             <option value="Pending">Pending</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Assigned Staff</label>
-                        <select id="assignedStaff" name="AssignedStaff" class="form-control">
-                            <option value="" selected>-- Select Staff --</option>
-                            @if (ViewBag.StaffList != null)
-                            {
-                                foreach (var staff in (List<MMS_ADP631_FA1.Models.Staff>)ViewBag.StaffList)
-                                {
-                                    <option value="@staff.StaffID">@staff.FullName</option>
-                                }
-                            }
-                            else
-                            {
-                                <option disabled>No staff available</option>
-                            }
                         </select>
                     </div>
                     <br/>
@@ -65,11 +48,6 @@
                 document.getElementById("reportType").value = data.reportType;
                 document.getElementById("details").value = data.details;
                 document.getElementById("status").value = data.status;
-
-                if (data.staffID != null)
-                {
-                    document.getElementById("assignedStaff").value = data.staffID;
-                }
             })
             .catch(error => console.error("Error loading report data:", error));
     }

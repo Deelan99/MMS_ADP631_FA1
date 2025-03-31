@@ -46,7 +46,6 @@ namespace MMS_ADP631_FA1.Controllers
         #endregion
 
         #region Report/ReviewReport
-        // I MAY NOT NEED THIS ANYMORE
         //GET Report/ReviewReport/{id}
         public IActionResult ReviewReport(int id)
         {
@@ -56,7 +55,6 @@ namespace MMS_ADP631_FA1.Controllers
                 return NotFound();
             }
 
-            ViewBag.StaffList = _context.Staff.ToList();
             return View(report);
         }
 
@@ -70,15 +68,24 @@ namespace MMS_ADP631_FA1.Controllers
                 return NotFound();
             }
 
+            var existingReport = _context.Reports.FirstOrDefault(r => r.ReportID == id);
+            if (existingReport == null)
+            {
+                return NotFound();
+            }
+
             try
             {
-                _context.Update(report);
-                _context.SaveChanges();
+                existingReport.ReportType = report.ReportType;
+                existingReport.Details = report.Details;
+                existingReport.Status = report.Status;
 
+                _context.SaveChanges();
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error updating report: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

@@ -67,7 +67,7 @@
                     @foreach (var report in Model)
                     {
                         <!-- Render the Reports/ReviewReport.cshtml for modal -->
-                        @await Html.PartialAsync("../Reports/ReviewReport", Model)
+                        @await Html.PartialAsync("../Reports/ReviewReport", report)
                         <tr>
                             <td>@report.Details</td>
                             <td>@report.Status</td>
@@ -96,8 +96,6 @@
 
     <!-- Render the Reports/Details.cshtml for modal -->
     @await Html.PartialAsync("../Reports/Details", new MMS_ADP631_FA1.Models.Report())
-
-    
 
     <!-- Render the Reports/Delete.cshtml for modal -->
     @await Html.PartialAsync("../Reports/Delete", new MMS_ADP631_FA1.Models.Report())
