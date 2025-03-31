@@ -22,10 +22,7 @@ namespace MMS_ADP631_FA1.Models
 
         public DateTime? DateOfBirth { get; set; }
 
-        public DateTime RegistrationDate { get; set; } = DateTime.Now;
-
+        public DateTime RegistrationDate { get; set; }
         public ICollection<ServiceRequest> ServiceRequests { get; set; } = new List<ServiceRequest>();
-
-        public ICollection<Report> Reports { get; set; } = new List<Report>();
     }
 }

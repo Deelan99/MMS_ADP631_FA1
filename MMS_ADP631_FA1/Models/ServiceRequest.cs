@@ -11,7 +11,7 @@ namespace MMS_ADP631_FA1.Models
 
         [Required]
         public string ServiceType { get; set; }
-        public DateTime RequestDate { get; set; } = DateTime.Now;
+        public DateTime RequestDate { get; set; }
         public string Status { get; set; } = "Pending";
 
         [BindNever]

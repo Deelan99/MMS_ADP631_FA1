@@ -20,5 +20,7 @@ namespace MMS_ADP631_FA1.Models
         [Required]
         public  string PhoneNumber { get; set; }
         public DateTime HireDate { get; set; }
+
+        public ICollection<Report> Reports { get; set; } = new List<Report>();
     }
 }

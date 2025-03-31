@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MMS_ADP631_FA1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250329121701_InitialCreate")]
+    [Migration("20250331175640_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -46,7 +46,9 @@ namespace MMS_ADP631_FA1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("RegistrationDate")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.HasKey("CitizenID");
 
@@ -101,9 +103,6 @@ namespace MMS_ADP631_FA1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CitizenID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Details")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -112,16 +111,21 @@ namespace MMS_ADP631_FA1.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("StaffID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("SubmissionDate")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.HasKey("ReportID");
 
-                    b.HasIndex("CitizenID");
+                    b.HasIndex("StaffID");
 
                     b.ToTable("Reports");
 
@@ -129,29 +133,38 @@ namespace MMS_ADP631_FA1.Migrations
                         new
                         {
                             ReportID = 1,
-                            CitizenID = 1,
                             Details = "Broken street light on Foggy Hollow Rd",
                             ReportType = "Complaint",
+                            StaffID = 1,
                             Status = "Under Review",
-                            SubmissionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            SubmissionDate = new DateTime(2024, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ReportID = 2,
-                            CitizenID = 3,
                             Details = "Water overflow at Sunset Boulevard",
                             ReportType = "Incident Report",
+                            StaffID = 2,
                             Status = "Resolved",
-                            SubmissionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            SubmissionDate = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ReportID = 3,
-                            CitizenID = 4,
-                            Details = "Quick response on pothole repair",
-                            ReportType = "Feedback",
-                            Status = "Closed",
-                            SubmissionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Details = "Annual budget review and expenditure analysis",
+                            ReportType = "Financial Audit",
+                            StaffID = 3,
+                            Status = "In Progress",
+                            SubmissionDate = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ReportID = 4,
+                            Details = "New park and recreation area proposal",
+                            ReportType = "Urban Development Proposal",
+                            StaffID = 4,
+                            Status = "Pending",
+                            SubmissionDate = new DateTime(2024, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -165,7 +178,9 @@ namespace MMS_ADP631_FA1.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("RequestDate")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("ServiceType")
                         .IsRequired()
@@ -186,7 +201,7 @@ namespace MMS_ADP631_FA1.Migrations
                         {
                             RequestID = 1,
                             CitizenID = 1,
-                            RequestDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RequestDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ServiceType = "Street Light Repair",
                             Status = "Pending"
                         },
@@ -194,7 +209,7 @@ namespace MMS_ADP631_FA1.Migrations
                         {
                             RequestID = 2,
                             CitizenID = 2,
-                            RequestDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RequestDate = new DateTime(2024, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ServiceType = "Garbage Collection Delay",
                             Status = "Completed"
                         },
@@ -202,7 +217,7 @@ namespace MMS_ADP631_FA1.Migrations
                         {
                             RequestID = 3,
                             CitizenID = 3,
-                            RequestDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RequestDate = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ServiceType = "Water Pressure Issue",
                             Status = "In Progress"
                         },
@@ -210,7 +225,7 @@ namespace MMS_ADP631_FA1.Migrations
                         {
                             RequestID = 4,
                             CitizenID = 4,
-                            RequestDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RequestDate = new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ServiceType = "Road Pothole Repair",
                             Status = "Pending"
                         });
@@ -235,7 +250,9 @@ namespace MMS_ADP631_FA1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("HireDate")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -279,18 +296,28 @@ namespace MMS_ADP631_FA1.Migrations
                             HireDate = new DateTime(2012, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PhoneNumber = "5557612984",
                             Position = "Finance Manager"
+                        },
+                        new
+                        {
+                            StaffID = 4,
+                            Department = "Urban Development",
+                            Email = "nina.calloway@municipality.com",
+                            FullName = "Nina Calloway",
+                            HireDate = new DateTime(2019, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "5553426789",
+                            Position = "City Planner"
                         });
                 });
 
             modelBuilder.Entity("MMS_ADP631_FA1.Models.Report", b =>
                 {
-                    b.HasOne("MMS_ADP631_FA1.Models.Citizen", "Citizen")
+                    b.HasOne("MMS_ADP631_FA1.Models.Staff", "Staff")
                         .WithMany("Reports")
-                        .HasForeignKey("CitizenID")
+                        .HasForeignKey("StaffID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Citizen");
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("MMS_ADP631_FA1.Models.ServiceRequest", b =>
@@ -306,9 +333,12 @@ namespace MMS_ADP631_FA1.Migrations
 
             modelBuilder.Entity("MMS_ADP631_FA1.Models.Citizen", b =>
                 {
-                    b.Navigation("Reports");
-
                     b.Navigation("ServiceRequests");
+                });
+
+            modelBuilder.Entity("MMS_ADP631_FA1.Models.Staff", b =>
+                {
+                    b.Navigation("Reports");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,11 +14,11 @@
                 <p><strong>Details:</strong> <span id="reportDetails"></span></p>
                 <p><strong>Status:</strong> <span id="reportStatus"></span></p>
                 <br />
-                <p class="h5">Citizen Details who Submitted Report</p>
+                <p class="h5">Staff Details who Submitted Report</p>
                 <br />
-                <p><strong>Full Name:</strong> <span id="citizenFullName"></span></p>
-                <p><strong>Email:</strong> <span id="citizenEmail"></span></p>
-                <p><strong>Phone Number:</strong> <span id="citizenPhoneNumber"></span></p>
+                <p><strong>Full Name:</strong> <span id="staffFullName"></span></p>
+                <p><strong>Email:</strong> <span id="staffEmail"></span></p>
+                <p><strong>Phone Number:</strong> <span id="staffPhoneNumber"></span></p>
             </div>
         </div>
     </div>
@@ -34,9 +34,9 @@
                 document.getElementById("reportDetails").innerText = data.details;
                 document.getElementById("reportStatus").innerText = data.status;
 
-                document.getElementById("citizenFullName").innerText = data.citizenFullName;
-                document.getElementById("citizenEmail").innerText = data.citizenEmail;
-                document.getElementById("citizenPhoneNumber").innerText = data.citizenPhoneNumber;
+                document.getElementById("staffFullName").innerText = data.citizenFullName;
+                document.getElementById("staffEmail").innerText = data.citizenEmail;
+                document.getElementById("staffPhoneNumber").innerText = data.citizenPhoneNumber;
             })
             .catch(error => console.error("Error loading report details:", error));
     }

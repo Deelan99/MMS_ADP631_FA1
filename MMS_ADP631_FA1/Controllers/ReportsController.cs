@@ -115,12 +115,12 @@ namespace MMS_ADP631_FA1.Controllers
         public IActionResult Details(int id)
         {
             var report = _context.Reports
-                .Include(r => r.Citizen)
+                .Include(r => r.Staff)
                 .FirstOrDefault(r => r.ReportID == id);
 
             if (report == null) return NotFound();
 
-            if (report.Citizen == null)
+            if (report.Staff == null)
             {
                 return BadRequest("Citizen details not found for this reports details.");
             }
@@ -131,9 +131,9 @@ namespace MMS_ADP631_FA1.Controllers
                 reportType = report.ReportType,
                 details = report.Details,
                 status = report.Status,
-                citizenFullName = report.Citizen.FullName,
-                citizenEmail = report.Citizen.Email,
-                citizenPhoneNumber = report.Citizen.PhoneNumber
+                citizenFullName = report.Staff.FullName,
+                citizenEmail = report.Staff.Email,
+                citizenPhoneNumber = report.Staff.PhoneNumber
             });
         }
         #endregion
