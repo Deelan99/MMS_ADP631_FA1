@@ -74,7 +74,7 @@
         document.getElementById("editCitizenForm").addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const formData = new FormData(this); // Collect the form data
+        const formData = new FormData(this);
         const token = document.querySelector('input[name="__RequestVerificationToken"]').value; // CSRF token
 
         const citizenId = document.getElementById("editCitizenId").value; // Get CitizenID

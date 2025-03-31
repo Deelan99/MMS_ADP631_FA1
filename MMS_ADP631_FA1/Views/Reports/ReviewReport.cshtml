@@ -1,1 +1,101 @@
-<link href="~/css/styles.css" rel="stylesheet" />
+@model MMS_ADP631_FA1.Models.Report
+
+<!-- Review Report Modal -->
+<div class="modal fade" id="reviewReportModal" tabindex="-1" role="dialog" aria-labelledby="reviewReportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reviewReportModalLabel">Review Report</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reviewReportForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="reportId" name="ReportID">
+
+                    <div class="mb-3">
+                        <label class="form-label">Report Type</label>
+                        <input type="text" id="reportType" name="ReportType" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Details</label>
+                        <textarea id="details" name="Details" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select id="status" name="Status" class="form-control">
+                            <option value="Under Review">Under Review</option>
+                            <option value="Resolved">Resolved</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Assigned Staff</label>
+                        <select id="assignedStaff" name="AssignedStaff" class="form-control">
+                            <option value="" selected>-- Select Staff --</option>
+                            @if (ViewBag.StaffList != null)
+                            {
+                                foreach (var staff in (List<MMS_ADP631_FA1.Models.Staff>)ViewBag.StaffList)
+                                {
+                                    <option value="@staff.StaffID">@staff.FullName</option>
+                                }
+                            }
+                            else
+                            {
+                                <option disabled>No staff available</option>
+                            }
+                        </select>
+                    </div>
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Load JSON Data from Controller
+    function loadReportForReview(reportId) {
+        fetch(`/Reports/Details/${reportId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("reportId").value = reportId;
+                document.getElementById("reportType").value = data.reportType;
+                document.getElementById("details").value = data.details;
+                document.getElementById("status").value = data.status;
+
+                if (data.staffID != null)
+                {
+                    document.getElementById("assignedStaff").value = data.staffID;
+                }
+            })
+            .catch(error => console.error("Error loading report data:", error));
+    }
+
+    document.getElementById("reviewReportForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const token = document.querySelector('input[name="__RequestVerificationToken"]').value; // CSRF token
+        const reportId = document.getElementById("reportId").value; // Get report ID
+
+        // Send a POST request to save the updated report
+        fetch(`/Reports/Review/${reportId}`, {
+            method: "POST",
+            headers: {
+                "RequestVerificationToken": token,
+            },
+            body: formData,
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                console.error("Failed to update report. Status:", response.status);
+            }
+        })
+        .catch(error => console.error("Error saving report data:", error));
+    });
+</script>

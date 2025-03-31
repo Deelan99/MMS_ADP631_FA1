@@ -17,6 +17,7 @@ namespace MMS_ADP631_FA1.Controllers
         // GET Report
         public IActionResult Index()
         {
+            ViewBag.StaffList = _context.Staff.ToList();
             var reports = _context.Reports.ToList();
             return View(reports);
         }
@@ -45,35 +46,41 @@ namespace MMS_ADP631_FA1.Controllers
         #endregion
 
         #region Report/ReviewReport
-        // GET Report/ReviewReport/{id}
+        // I MAY NOT NEED THIS ANYMORE
+        //GET Report/ReviewReport/{id}
         public IActionResult ReviewReport(int id)
         {
-            var report = _context.Reports.Find(id);
+            var report = _context.Reports.FirstOrDefault(r => r.ReportID == id);
             if (report == null)
             {
                 return NotFound();
             }
+
+            ViewBag.StaffList = _context.Staff.ToList();
             return View(report);
         }
 
-        // POST Report/ReviewReport/{id}
+        // POST: Reports/Review/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ReviewReport(int id, Report report)
+        public IActionResult Review(int id, Report report)
         {
             if (id != report.ReportID)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
                 _context.Update(report);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
 
-            return View(report);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
 
