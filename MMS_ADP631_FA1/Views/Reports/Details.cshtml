@@ -30,7 +30,7 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("submissionDate").innerText = data.submissionDate;
-                document.getElementById("reportType").innerText = data.reportType;
+                document.getElementById("reportType").value = data.reportType;
                 document.getElementById("reportDetails").innerText = data.details;
                 document.getElementById("reportStatus").innerText = data.status;
 

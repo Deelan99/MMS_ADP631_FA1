@@ -105,14 +105,28 @@ namespace MMS_ADP631_FA1.Controllers
         }
 
         // POST Report/Delete/{id}
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmation(int id)
         {
-            var report = _context.Reports.Find(id);
-            _context.Reports.Remove(report);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var report = _context.Reports.Find(id);
+                if (report == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Reports.Remove(report);
+                _context.SaveChanges();
+
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         #endregion
 
@@ -136,7 +150,7 @@ namespace MMS_ADP631_FA1.Controllers
 
             if (report.Staff == null)
             {
-                return BadRequest("Citizen details not found for this reports details.");
+                return BadRequest("Staff details not found for this reports details.");
             }
 
             return Json(new
