@@ -13,7 +13,7 @@ public class CitizenControllerTests
     {
         // Setting up an in memory db
         _options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(databaseName: "TestingDB")
+            .UseInMemoryDatabase(databaseName: "Test_CitizenDB")
             .Options;
 
         using (var context = new ApplicationDbContext(_options))
