@@ -76,10 +76,12 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.Update(staff);
                 _context.SaveChanges();
 
+                TempData["SuccessfulMessage"] = "Changes saved to the selected Staff Member successfully";
                 return Ok();
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Staff Member. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -133,11 +135,14 @@ namespace MMS_ADP631_FA1.Controllers
                 }
                 _context.Staff.Remove(staffMember);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+
+                TempData["SuccessfulMessage"] = "Staff Member deleted successfully";
+                return Ok();
 
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was an error deleting the Staff Member. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }

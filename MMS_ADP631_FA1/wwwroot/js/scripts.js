@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (modal) {
             modal.addEventListener("shown.bs.modal", function () {
-                let phoneForm = modal.querySelector("form");
+                let modalForm = modal.querySelector("form");
                 let phoneInput = modal.querySelector("#PhoneNumber");
                 let errorText = modal.querySelector("#phoneError");
 
-                if (!phoneForm || !phoneInput || !errorText) return;
+                if (!modalForm || !phoneInput || !errorText) return;
 
                 let validatePhone = function (event) {
                     let pattern = /^[0-9]{3} [0-9]{3} [0-9]{4}$/;
@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 };
 
-                phoneForm.addEventListener("submit", validatePhone);
+                modalForm.addEventListener("submit", validatePhone);
                 phoneInput.addEventListener("input", hideErrorOnInput);
 
                 modal.addEventListener("hidden.bs.modal", function () {
-                    phoneForm.reset();
+                    modalForm.reset();
                     errorText.style.display = "none";
-                    phoneForm.removeEventListener("submit", validatePhone);
+                    modalForm.removeEventListener("submit", validatePhone);
                     phoneInput.removeEventListener("input", hideErrorOnInput);
                 });
             });

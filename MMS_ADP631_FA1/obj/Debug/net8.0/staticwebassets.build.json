@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hd8+1y8REg+O3SGIvWLB5kYqqhnmQsf9d/IBlZ6CvnI=",
+  "Hash": "pbHmHuBmq1dtNTd8XLGYyD2bQX4ordfXtPH6umckTHI=",
   "Source": "MMS_ADP631_FA1",
   "BasePath": "_content/MMS_ADP631_FA1",
   "Mode": "Default",
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7w1bqnx14m",
-      "Integrity": "V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME=",
+      "Fingerprint": "a5e2tof8t4",
+      "Integrity": "HkG5zfcSNz9v3bxTuzrS/pNtJXNOgTK8M1cxsdOj4Po=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\scripts.js"
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "Route": "js/scripts.7w1bqnx14m.js",
+      "Route": "js/scripts.a5e2tof8t4.js",
       "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\js\\scripts.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -161,11 +161,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME=\""
+          "Value": "\"HkG5zfcSNz9v3bxTuzrS/pNtJXNOgTK8M1cxsdOj4Po=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 14:44:15 GMT"
+          "Value": "Tue, 01 Apr 2025 14:49:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -175,7 +175,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7w1bqnx14m"
+          "Value": "a5e2tof8t4"
         },
         {
           "Name": "label",
@@ -183,7 +183,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME="
+          "Value": "sha256-HkG5zfcSNz9v3bxTuzrS/pNtJXNOgTK8M1cxsdOj4Po="
         }
       ]
     },
@@ -206,11 +206,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME=\""
+          "Value": "\"HkG5zfcSNz9v3bxTuzrS/pNtJXNOgTK8M1cxsdOj4Po=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 14:44:15 GMT"
+          "Value": "Tue, 01 Apr 2025 14:49:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -220,7 +220,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME="
+          "Value": "sha256-HkG5zfcSNz9v3bxTuzrS/pNtJXNOgTK8M1cxsdOj4Po="
         }
       ]
     }

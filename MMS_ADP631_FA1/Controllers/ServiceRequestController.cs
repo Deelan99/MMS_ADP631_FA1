@@ -103,10 +103,13 @@ namespace MMS_ADP631_FA1.Controllers
             {
                 existingRequest.Status = serviceRequest.Status;
                 _context.SaveChanges();
+
+                TempData["SuccessfulMessage"] = "Updated status saved successfully";
                 return Ok();
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected service request status. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -171,11 +174,13 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.ServiceRequests.Remove(serviceRequest);
                 _context.SaveChanges();
 
+                TempData["SuccessfulMessage"] = "Service Request deleted successfully";
                 return Ok();
 
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was an error deleting the Service Request. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }

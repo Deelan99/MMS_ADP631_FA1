@@ -17,13 +17,10 @@ namespace MMS_ADP631_FA1.Controllers
         // GET Report
         public IActionResult Index()
         {
-            //ViewBag.StaffList = _context.Staff.ToList();
-            //var reports = _context.Reports.ToList();
-            //return View(reports);
             var staff = _context.Staff.ToList();
             var reports = _context.Reports.ToList();
             var model = new Tuple<List<Report>, List<Staff>>(reports, staff);
-            return View(model); // ✅ Pass the expected Tuple
+            return View(model);
         }
 
         #region Report/Create
@@ -92,12 +89,12 @@ namespace MMS_ADP631_FA1.Controllers
                 existingReport.Details = report.Details;
                 existingReport.Status = report.Status;
 
-                _context.SaveChanges();
+                TempData["SuccessfulMessage"] = "Changes saved to the selected Report successfully";
                 return Ok();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error updating report: {ex.Message}");
+                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Report. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -132,11 +129,13 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.Reports.Remove(report);
                 _context.SaveChanges();
 
+                TempData["SuccessfulMessage"] = "Report deleted successfully";
                 return Ok();
 
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was an error deleting the Report. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }
