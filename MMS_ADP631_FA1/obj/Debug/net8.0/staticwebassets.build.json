@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2/92thjUwvR9St+leSwuTpncYDvpBM65pyKgfP6zasM=",
+  "Hash": "hd8+1y8REg+O3SGIvWLB5kYqqhnmQsf9d/IBlZ6CvnI=",
   "Source": "MMS_ADP631_FA1",
   "BasePath": "_content/MMS_ADP631_FA1",
   "Mode": "Default",
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "3r8b2a0bt1",
-      "Integrity": "8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=",
+      "Fingerprint": "7w1bqnx14m",
+      "Integrity": "V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\scripts.js"
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "Route": "js/scripts.3r8b2a0bt1.js",
+      "Route": "js/scripts.7w1bqnx14m.js",
       "AssetFile": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\js\\scripts.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -153,7 +153,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3"
+          "Value": "2126"
         },
         {
           "Name": "Content-Type",
@@ -161,11 +161,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=\""
+          "Value": "\"V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 14:21:45 GMT"
+          "Value": "Tue, 01 Apr 2025 14:44:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -175,7 +175,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "3r8b2a0bt1"
+          "Value": "7w1bqnx14m"
         },
         {
           "Name": "label",
@@ -183,7 +183,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U="
+          "Value": "sha256-V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME="
         }
       ]
     },
@@ -198,7 +198,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3"
+          "Value": "2126"
         },
         {
           "Name": "Content-Type",
@@ -206,11 +206,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=\""
+          "Value": "\"V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 14:21:45 GMT"
+          "Value": "Tue, 01 Apr 2025 14:44:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -220,7 +220,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U="
+          "Value": "sha256-V0RyUBGrHSQ4agbhV+fNtqXiEhMr40iEs3sBCFCOXME="
         }
       ]
     }

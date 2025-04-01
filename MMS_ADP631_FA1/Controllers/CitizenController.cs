@@ -83,10 +83,12 @@ namespace MyApp.Namespace
                 _context.Update(citizen);
                 _context.SaveChanges();
 
+                TempData["SuccessfulMessage"] = "Changes saved to the selected Citizen successfully";
                 return Ok();
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Citizen. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -122,10 +124,12 @@ namespace MyApp.Namespace
                 _context.Citizens.Remove(citizen);
                 _context.SaveChanges();
 
+                TempData["SuccessfulMessage"] = "Citizen deleted successfully";
                 return Ok();
             }
             catch (Exception)
             {
+                TempData["ErrorMessage"] = "There was an error deleting the Citizen. Please try again.";
                 return StatusCode(500, "Internal server error");
             }
         }
