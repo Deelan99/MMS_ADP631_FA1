@@ -12,6 +12,12 @@
     <title>@ViewData["Title"]</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .card-header {
+            background-color: #d69f6d;
+            color: #fff;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation Bar -->
@@ -73,48 +79,29 @@
 
         <!-- Statistics Overview -->
         <div class="row mt-4">
-            <div class="col-md-3">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header">Active Service Requests</div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header" style="background-color: #d69f6d">Active Service Requests</div>
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <!-- Logic to count number of Service Requests in System -->
-                            @{
-                                var activeRequestsCount = Model.Item1.Count(request => request.Status == "In Progress");
-                            }
-                            @activeRequestsCount
-
-                        </h5>
+                        <h5 class="card-title">@Model.Item1.Count(request => request.Status == "In Progress")</h5>
                         <p class="card-text">Ongoing service requests</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Registered Citizens</div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header" style="background-color: #d69f6d">Registered Citizens</div>
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <!-- Logic to count number of Registered Citizens in the system -->
-                            @{
-                                var registerCitizens = Model.Item2.Count();
-                            }
-                            @registerCitizens
-                        </h5>
+                        <h5 class="card-title">@Model.Item2.Count()</h5>
                         <p class="card-text">Total citizens registered</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Staff Members</div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header" style="background-color: #d69f6d">Staff Members</div>
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <!-- Logic to count number of Staff Members in the system -->
-                            @{
-                                var staffMembers = Model.Item3.Count();
-                            }
-                            @staffMembers
-                        </h5>
+                        <h5 class="card-title">@Model.Item3.Count()</h5>
                         <p class="card-text">Active staff members</p>
                     </div>
                 </div>
@@ -122,14 +109,13 @@
         </div>
 
         <!-- Quick Access Links -->
-        <p class="h3" >Quick Actions</p>
+        <h3>Quick Actions</h3>
         <div class="row mt-4">
             <div class="col-md-4">
                 <button type="button" class="btn btn-secondary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#addCitizenModal">
                     Add New Citizen
                 </button>
             </div>
-
             <div class="col-md-4">
                 <button type="button" class="btn btn-secondary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#createServiceRequestModal">
                     Create Service Request
@@ -139,18 +125,6 @@
                 <button type="button" class="btn btn-secondary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#viewPendingReportModal">
                     View Pending Reports
                 </button>
-            </div>
-        </div>
-
-        <!-- News/Updates Section -->
-        <div class="row mt-5">
-            <div class="col-12">
-                <h3>Latest News & Updates</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">New policy for staff management introduced. <a href="#">Read more...</a></li>
-                    <li class="list-group-item">Citizen registration is now open for the new year. <a href="#">Learn more...</a></li>
-                    <li class="list-group-item">Important updates on service request handling. <a href="#">Read more...</a></li>
-                </ul>
             </div>
         </div>
     </div>
