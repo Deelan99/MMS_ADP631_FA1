@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\css\\styles.css",
-      "PackagePath": "staticwebassets\\css\\styles.css"
-    },
-    {
       "Id": "C:\\AspnetCoreApps\\CTU_ADP31_FA1_MMS\\MMS_ADP631_FA1\\MMS_ADP631_FA1\\wwwroot\\js\\scripts.js",
       "PackagePath": "staticwebassets\\js\\scripts.js"
     },
