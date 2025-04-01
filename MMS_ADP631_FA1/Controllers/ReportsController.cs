@@ -89,6 +89,9 @@ namespace MMS_ADP631_FA1.Controllers
                 existingReport.Details = report.Details;
                 existingReport.Status = report.Status;
 
+                _context.Update(existingReport);
+                _context.SaveChanges();
+
                 TempData["SuccessfulMessage"] = "Changes saved to the selected Report successfully";
                 return Ok();
             }
