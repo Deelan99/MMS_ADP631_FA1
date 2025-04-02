@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Controllers;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
+using Xunit;
 
 public class StaffControllerTests
 {
@@ -17,7 +18,7 @@ public class StaffControllerTests
             .Options;
         using (var context = new ApplicationDbContext(_options))
         {
-            context.Staff.Add(new Staff { StaffID = 1, FullName = "Philip Dumphey", Position = "Parks Manager", Department = "Parks" });
+            context.Staff.Add(new Staff { StaffID = 1, FullName = "Philip Dumphey", Position = "Parks Manager", Department = "Parks", Email = "PhilD@email.com", PhoneNumber = "123 333 4455" });
             context.SaveChanges();
         }
 
@@ -29,7 +30,7 @@ public class StaffControllerTests
     public void GetStaff_ReturnsStaffAsList()
     {
         var result = _controller.Index() as ViewResult;
-        var model = result.Model as List<Staff>;
+        var model = result?.Model as List<Staff>;
 
         Assert.NotNull(model);
         Assert.Single(model);
@@ -42,14 +43,14 @@ public class StaffControllerTests
     {
         var newStaff = new Staff { FullName = "Caleb Montgumry", Position = "Electrician", Department = "Maintenance" };
 
-        var result = _controller.Create(newStaff) as RedirectToActionResult
+        var result = _controller.Create(newStaff) as RedirectToActionResult;
     
         Assert.NotNull(result);
         Assert.Equal("Index", result.ActionName);
 
         using (var context = new ApplicationDbContext(_options))
         {
-            Assert.Equal(2, context.Staff.Count();
+            Assert.Equal(2, context.Staff.Count());
             Assert.Equal("Caleb Montgumry", context.Staff.Last().FullName);
         }
     }

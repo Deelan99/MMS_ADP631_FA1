@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Controllers;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
+using Xunit;
 
 public class ReportControllerTests
 {
@@ -30,7 +31,7 @@ public class ReportControllerTests
     public void GetReports_ReturnsReportsAsList()
     {
         var result = _controller.Index() as ViewResult;
-        var model = result.Model as List<Report>;
+        var model = result?.Model as List<Report>;
 
         Assert.NotNull(model);
         Assert.Single(model);

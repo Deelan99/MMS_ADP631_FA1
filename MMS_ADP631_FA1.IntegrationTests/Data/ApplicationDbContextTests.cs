@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
+using Xunit;
 
 public class ApplicationDbContextTests
 {
@@ -83,7 +84,7 @@ public class ApplicationDbContextTests
         using (var context = GetDbContext())
         {
             var updatedReport = context.Reports.Find(1);
-            Assert.Equal("Approved", updatedReport.Status);
+            Assert.Equal("Approved", updatedReport?.Status);
         }
     }
 }

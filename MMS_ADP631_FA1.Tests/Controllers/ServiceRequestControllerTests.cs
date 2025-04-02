@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Controllers;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
+using Xunit;
 
 public class ServiceRequestControllerTests
 {
@@ -29,7 +30,7 @@ public class ServiceRequestControllerTests
     public void GetServiceRequests_ReturnsServiceRequestAsList()
     {
         var result = _controller.Index() as ViewResult;
-        var model = result.Model as List<ServiceRequest>;
+        var model = result?.Model as List<ServiceRequest>;
 
         Assert.NotNull(model);
         Assert.Single(model);

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 using MyApp.Namespace;
+using Xunit;
 
 public class CitizenControllerTests
 {
@@ -18,7 +19,7 @@ public class CitizenControllerTests
 
         using (var context = new ApplicationDbContext(_options))
         {
-            context.Citizens.Add(new Citizen { CitizenID = 1, FullName = "John Doe", Email = "johnd@testemail.com" });
+            context.Citizens.Add(new Citizen { CitizenID = 1, FullName = "John Doe", Address = "123 Test Street", PhoneNumber = "123 333 4455", Email = "johnd@testemail.com" });
             context.SaveChanges();
         }
 
@@ -30,7 +31,7 @@ public class CitizenControllerTests
     public void GetCitizens_ReturnsLIstOfCitizens()
     {
         var result = _controller.Index() as ViewResult;
-        var model = result.Model as List<Citizen>;
+        var model = result?.Model as List<Citizen>;
 
         Assert.NotNull(model);
         Assert.Single(model);
