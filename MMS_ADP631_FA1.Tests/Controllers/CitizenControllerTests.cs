@@ -44,6 +44,8 @@ public class CitizenControllerTests
         var newCitizen = new Citizen
         {
             FullName = "Jane Doe",
+            Address = "123 Test Street",
+            PhoneNumber = "123 333 4455",
             Email = "jane@example.com"
         };
 

@@ -41,7 +41,7 @@ public class StaffControllerTests
     [Fact]
     public void CreateStaff_AddStaff()
     {
-        var newStaff = new Staff { FullName = "Caleb Montgumry", Position = "Electrician", Department = "Maintenance" };
+        var newStaff = new Staff { FullName = "Caleb Montgumry", Position = "Electrician", Department = "Maintenance", Email = "CalebM@email.com", PhoneNumber = "123 333 4455" };
 
         var result = _controller.Create(newStaff) as RedirectToActionResult;
     

@@ -121,7 +121,7 @@
     </footer>
 
     <!-- Render the Reports/Create.cshtml for modal -->
-    @await Html.PartialAsync("../Reports/Create", new Tuple<List<MMS_ADP631_FA1.Models.Report>, List<MMS_ADP631_FA1.Models.Staff>>(Model.Item1, Model.Item2))
+    @await Html.PartialAsync("../Reports/Create", new Tuple<List<MMS_ADP631_FA1.Models.Report>?, List<MMS_ADP631_FA1.Models.Staff>?>(Model.Item1, Model.Item2))
 
     <!-- Render the Reports/Details.cshtml for modal -->
     @await Html.PartialAsync("../Reports/Details", new MMS_ADP631_FA1.Models.Report())

@@ -1,5 +1,6 @@
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_MMS_ADP631_FA1.Tests
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\testhost.dll
+C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\xunit.abstractions.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.deps.json
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.runtimeconfig.json
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\appsettings.Development.json
@@ -8,6 +9,7 @@ C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debu
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.staticwebassets.endpoints.json
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.exe
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\testhost.exe
+C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\xunit.runner.visualstudio.testadapter.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.Tests.deps.json
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.Tests.runtimeconfig.json
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\MMS_ADP631_FA1.Tests.dll
@@ -74,7 +76,6 @@ C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debu
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\System.Text.Json.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\System.Windows.Extensions.dll
-C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\xunit.abstractions.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\xunit.assert.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\xunit.core.dll
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1.Tests\bin\Debug\net8.0\xunit.execution.dotnet.dll
