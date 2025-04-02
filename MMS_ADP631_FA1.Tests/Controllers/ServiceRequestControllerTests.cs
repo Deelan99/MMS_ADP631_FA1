@@ -7,7 +7,6 @@ using Xunit;
 
 public class ServiceRequestControllerTests
 {
-    private ServiceRequestController _controller;
     private DbContextOptions<ApplicationDbContext> _options;
 
     public ServiceRequestControllerTests()
@@ -15,37 +14,43 @@ public class ServiceRequestControllerTests
         _options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseInMemoryDatabase("Test_ServiceRequestDB")
             .Options;
+    }
 
+    [Fact]
+    public void GetServiceRequests_ReturnsServiceRequestAsList()
+    {
         using (var context = new ApplicationDbContext(_options))
         {
             context.ServiceRequests.Add(new ServiceRequest { RequestID = 1, ServiceType = "Grass Cutting", Status = "Pending" });
             context.SaveChanges();
         }
 
-        var dbContext = new ApplicationDbContext(_options);
-        _controller = new ServiceRequestController(dbContext);
+        using (var context = new ApplicationDbContext(_options))
+        {
+            var controller = new ServiceRequestController(context);
+            var result = controller.Index() as ViewResult;
+            var model = result?.Model as List<ServiceRequest>;
+
+            Assert.NotNull(model);
+            Assert.Single(model);
+            Assert.Equal("Grass Cutting", model[0].ServiceType);
+        }
     }
 
     [Fact]
-    public void GetServiceRequests_ReturnsServiceRequestAsList()
+    public void CreateServiceRequest_AddsRequest()
     {
-        var result = _controller.Index() as ViewResult;
-        var model = result?.Model as List<ServiceRequest>;
+        using (var context = new ApplicationDbContext(_options))
+        {
+            var controller = new ServiceRequestController(context);
+            var newRequest = new ServiceRequest { ServiceType = "Pothole on Main Road", Status = "Pending" };
 
-        Assert.NotNull(model);
-        Assert.Single(model);
-        Assert.Equal("Grass Cutting", model[0].ServiceType);
-    }
+            controller.ModelState.Clear(); // Ensure valid ModelState
+            var result = controller.Create(newRequest) as RedirectToActionResult;
 
-    [Fact]
-    public void CreateServiceRequest_AddRequest()
-    {
-        var newRequest = new ServiceRequest { ServiceType = "Pothole on Main Road", Status = "Pending" };
-
-        var result = _controller.Create(newRequest) as RedirectToActionResult;
-
-        Assert.NotNull(result);
-        Assert.Equal("Index", result.ActionName);
+            Assert.NotNull(result);
+            Assert.Equal("Index", result.ActionName);
+        }
 
         using (var context = new ApplicationDbContext(_options))
         {
@@ -53,5 +58,4 @@ public class ServiceRequestControllerTests
             Assert.Equal("Pothole on Main Road", context.ServiceRequests.Last().ServiceType);
         }
     }
-
 }
