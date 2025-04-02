@@ -95,7 +95,7 @@ namespace MMS_ADP631_FA1.Controllers
                 TempData["SuccessfulMessage"] = "Changes saved to the selected Report successfully";
                 return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Report. Please try again.";
                 return StatusCode(500, "Internal server error");

@@ -59,7 +59,7 @@ namespace MMS_ADP631_FA1.Controllers
                 TempData["ErrorMessage"] = "There was an error creating the Service Request. Please try again.";
             }
 
-            if (TempData["Home"] != null && (bool)TempData["Home"] == true)
+            if (TempData.TryGetValue("Home", out var home) && home is bool isHome && isHome)
             {
                 TempData.Remove("Home");
                 return RedirectToAction("Index", "Home"); 

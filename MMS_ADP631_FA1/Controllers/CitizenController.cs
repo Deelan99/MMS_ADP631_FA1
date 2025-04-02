@@ -45,7 +45,7 @@ namespace MyApp.Namespace
                 TempData["ErrorMessage"] = "There was an error registering the Citizen. Please try again.";
             }
 
-            if (TempData["Home"] != null && (bool)TempData["Home"] == true)
+            if (TempData.TryGetValue("Home", out var home) && home is bool isHome && isHome)
             {
                 TempData.Remove("Home");
                 return RedirectToAction("Index", "Home");
