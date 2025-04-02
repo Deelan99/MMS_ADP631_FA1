@@ -59,7 +59,7 @@ public class StaffControllerTests
 
         using (var context = new ApplicationDbContext(_options))
         {
-            var addedStaff = context.Staff.FirstOrDefault(s => s.FullName == "Philip Dumphey");
+            var addedStaff = context.Staff.FirstOrDefault(s => s.FullName == "Caleb Montgumry");
             Assert.NotNull(addedStaff);
             Assert.Equal("Caleb Montgumry", context.Staff.Last().FullName);
         }

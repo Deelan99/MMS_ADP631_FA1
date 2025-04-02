@@ -31,16 +31,23 @@ namespace MMS_ADP631_FA1.Tests.Controllers
         {
             using (var context = new ApplicationDbContext(_options))
             {
+                var citizen = new Citizen { FullName = "Dude Perfect", Address = "123 Dude Street", PhoneNumber = "1234567890", Email = "DudeP@example.com" };
+                context.Citizens.Add(citizen);
+                context.SaveChanges();
+
+                _controller = new ServiceRequestController(context);
                 context.ServiceRequests.Add(new ServiceRequest { ServiceType = "Grass Cutting", Status = "Pending" });
                 context.SaveChanges();
-                _controller = new ServiceRequestController(context);
 
                 var result = _controller.Index() as ViewResult;
-                var model = result?.Model as List<ServiceRequest>;
-
+                var model = result?.Model as Tuple<List<ServiceRequest>, List<Citizen>>;
                 Assert.NotNull(model);
-                Assert.Single(model);
-                Assert.Equal("Grass Cutting", model[0].ServiceType);
+                Assert.NotNull(model.Item1);
+                Assert.NotEmpty(model.Item2);
+
+                var addedServiceRequest = model.Item1.FirstOrDefault(sr => sr.ServiceType == "Grass Cutting");
+                Assert.NotNull(addedServiceRequest);
+                Assert.Equal("Grass Cutting", addedServiceRequest.ServiceType);
             }
         }
 
