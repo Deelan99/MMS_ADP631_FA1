@@ -5,7 +5,6 @@ using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 using Xunit;
 
-
 namespace MMS_ADP631_FA1.Tests.Controllers
 {
     public class ServiceRequestControllerTests
@@ -15,6 +14,7 @@ namespace MMS_ADP631_FA1.Tests.Controllers
 
         public ServiceRequestControllerTests()
         {
+            // Setting up an in memory db
             _options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase("Test_ServiceRequestDB")
                 .Options;
