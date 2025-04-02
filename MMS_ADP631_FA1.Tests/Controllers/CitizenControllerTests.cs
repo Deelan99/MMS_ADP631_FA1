@@ -7,6 +7,7 @@ using Xunit;
 
 public class CitizenControllerTests
 {
+    private CitizenController _controller;
     private DbContextOptions<ApplicationDbContext> _options;
 
     public CitizenControllerTests()
@@ -15,56 +16,50 @@ public class CitizenControllerTests
         _options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseInMemoryDatabase(databaseName: "Test_CitizenDB")
             .Options;
+
+        using (var context = new ApplicationDbContext(_options))
+        {
+            context.Database.EnsureCreated();
+            context.Citizens.Add(new Citizen { CitizenID = 1, FullName = "John Doe", Address = "123 Test Street", PhoneNumber = "123 333 4455", Email = "johnd@testemail.com" });
+            context.SaveChanges();
+        }
+
+        var dbContext = new ApplicationDbContext(_options);
+        _controller = new CitizenController(dbContext);
     }
 
     [Fact]
     public void GetCitizens_ReturnsLIstOfCitizens()
     {
-        using (var context = new ApplicationDbContext(_options))
-        {
-            context.Citizens.Add(new Citizen { CitizenID = 1, FullName = "John Doe", Address = "123 Test Street", PhoneNumber = "123 333 4455", Email = "johnd@testemail.com" });
-            context.SaveChanges();
-        }
+        var result = _controller.Index() as ViewResult;
+        var model = result?.Model as List<Citizen>;
 
-
-        using (var context = new ApplicationDbContext(_options))
-        {
-            var controller = new CitizenController(context);
-            var result = controller.Index() as ViewResult;
-            var model = result?.Model as List<Citizen>;
-
-            Assert.NotNull(model);
-            Assert.Single(model);
-            Assert.Equal("John Doe", model[0].FullName);
-        }
+        Assert.NotNull(model);
+        Assert.Single(model);
+        Assert.Equal("John Doe", model[0].FullName);
     }
 
     [Fact]
     public void CreateCitizen_AddsCitizen()
     {
-        using (var context = new ApplicationDbContext(_options))
+        var newCitizen = new Citizen
         {
-            var controller = new CitizenController(context);
-            var newCitizen = new Citizen
-            {
-                FullName = "Jane Doe",
-                Address = "123 Test Street",
-                PhoneNumber = "123 333 4455",
-                Email = "jane@example.com"
-            };
+            CitizenID = 2,
+            FullName = "Jane Doe",
+            Address = "123 Test Street",
+            PhoneNumber = "123 333 4455",
+            Email = "jane@example.com"
+        };
 
-            controller.ModelState.Clear(); // Ensuring ModelState is valid
-            var result = controller.Create(newCitizen) as RedirectToActionResult;
+        var result = _controller.Create(newCitizen) as RedirectToActionResult;
 
-            Assert.NotNull(result);
-            Assert.Equal("Index", result.ActionName);
-        }
+        Assert.NotNull(result);
+        Assert.Equal("Index", result.ActionName);
 
         using (var context = new ApplicationDbContext(_options))
         {
             Assert.Equal(2, context.Citizens.Count());
             Assert.Equal("Jane Doe", context.Citizens.Last().FullName);
         }
-
     }
 }
