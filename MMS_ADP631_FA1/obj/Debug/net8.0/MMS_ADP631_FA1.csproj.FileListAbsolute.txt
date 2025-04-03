@@ -200,3 +200,4 @@ C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1\obj\Debug\net8
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1\obj\Debug\net8.0\MMS_ADP631_FA1.pdb
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1\obj\Debug\net8.0\MMS_ADP631_FA1.genruntimeconfig.cache
 C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1\obj\Debug\net8.0\ref\MMS_ADP631_FA1.dll
+C:\AspnetCoreApps\CTU_ADP31_FA1_MMS\MMS_ADP631_FA1\MMS_ADP631_FA1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
