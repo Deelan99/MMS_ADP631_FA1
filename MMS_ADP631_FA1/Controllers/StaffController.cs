@@ -10,13 +10,18 @@ namespace MMS_ADP631_FA1.Controllers
 
         public StaffController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         // GET Staff
         public ActionResult Index()
         {
-            var staff = _context.Staff.ToList();
+            if (_context == null)
+            {
+                return Problem("Database context is not available.");
+            }
+
+            var staff = _context.Staff?.ToList() ?? new List<Staff>();
             return View(staff);
         }
 
@@ -36,13 +41,21 @@ namespace MMS_ADP631_FA1.Controllers
             {
                 _context.Add(staff);
                 _context.SaveChanges();
+                
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "New Staff Member created successfully";
+                }
 
-                TempData["SuccessfulMessage"] = "New Staff Member created successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                TempData["ErrorMessage"] = "There was an error creating the Staff Member. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error creating the Staff Member. Please try again.";
+                }
+
                 return RedirectToAction(nameof(Index));
             }
 
@@ -76,12 +89,20 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.Update(staff);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Changes saved to the selected Staff Member successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Changes saved to the selected Staff Member successfully";
+                }
+
                 return Ok();
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Staff Member. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Staff Member. Please try again.";
+                }
+
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -136,13 +157,21 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.Staff.Remove(staffMember);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Staff Member deleted successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Staff Member deleted successfully";
+                }
+
                 return Ok();
 
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was an error deleting the Staff Member. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error deleting the Staff Member. Please try again.";
+                }
+
                 return StatusCode(500, "Internal server error");
             }
         }

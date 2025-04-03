@@ -10,14 +10,23 @@ namespace MyApp.Namespace
 
         public CitizenController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         // GET: Citizen
         public ActionResult Index()
         {
-            TempData.Remove("Home");
-            var citizens = _context.Citizens.ToList();
+            if (_context == null)
+            {
+                return Problem("Database context is not available.");
+            }
+
+            if (TempData != null)
+            {
+                TempData.Remove("Home");
+            }
+
+            var citizens = _context.Citizens?.ToList() ?? new List<Citizen>();
             return View(citizens);
         }
 
@@ -38,19 +47,28 @@ namespace MyApp.Namespace
                 _context.Add(citizen);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "New Citizen registered successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "New Citizen registered successfully";
+                }
             }
             else
             {
-                TempData["ErrorMessage"] = "There was an error registering the Citizen. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error registering the Citizen. Please try again.";
+                }
+
             }
 
-            if (TempData.TryGetValue("Home", out var home) && home is bool isHome && isHome)
+            if (TempData != null)
             {
-                TempData.Remove("Home");
-                return RedirectToAction("Index", "Home");
+                if (TempData.TryGetValue("Home", out var home) && home is bool isHome && isHome)
+                {
+                    TempData.Remove("Home");
+                    return RedirectToAction("Index", "Home");
+                }
             }
-
             return RedirectToAction(nameof(Index));
         }
         #endregion
@@ -83,12 +101,20 @@ namespace MyApp.Namespace
                 _context.Update(citizen);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Changes saved to the selected Citizen successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Changes saved to the selected Citizen successfully";
+                }
+
                 return Ok();
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Citizen. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Citizen. Please try again.";
+                }
+
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -124,12 +150,20 @@ namespace MyApp.Namespace
                 _context.Citizens.Remove(citizen);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Citizen deleted successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Citizen deleted successfully";
+                }
+
                 return Ok();
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was an error deleting the Citizen. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error deleting the Citizen. Please try again.";
+                }
+
                 return StatusCode(500, "Internal server error");
             }
         }

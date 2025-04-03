@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.JSInterop;
 using MMS_ADP631_FA1.Data;
 using MMS_ADP631_FA1.Models;
 
@@ -12,15 +11,24 @@ namespace MMS_ADP631_FA1.Controllers
 
         public ServiceRequestController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         // GET Service Request
         public ActionResult Index()
         {
-            TempData.Remove("Home");
-            var serviceRequests = _context.ServiceRequests.ToList();
-            var citizens = _context.Citizens.ToList();
+            if (_context == null)
+            {
+                return Problem("Database context is not available.");
+            }
+
+            if (TempData != null)
+            {
+                TempData.Remove("Home");
+            }
+
+            var serviceRequests = _context.ServiceRequests?.ToList() ?? new List<ServiceRequest>();
+            var citizens = _context.Citizens?.ToList() ?? new List<Citizen>();
             var model = new Tuple<List<ServiceRequest>, List<Citizen>>(serviceRequests, citizens);
             return View(model);
         }
@@ -51,23 +59,31 @@ namespace MMS_ADP631_FA1.Controllers
             if (ModelState.IsValid)
             {
                 _context.ServiceRequests.Add(serviceRequest);
-                TempData["SuccessfulMessage"] = "Service Request created successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Service Request created successfully";
+                }
                 _context.SaveChanges();
             }
             else
             {
-                TempData["ErrorMessage"] = "There was an error creating the Service Request. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error creating the Service Request. Please try again.";
+                }
+                
             }
 
-            if (TempData.TryGetValue("Home", out var home) && home is bool isHome && isHome)
+            if (TempData != null)
             {
-                TempData.Remove("Home");
-                return RedirectToAction("Index", "Home"); 
+                if (TempData.TryGetValue("Home", out var home) && home is bool isHome && isHome)
+                {
+                    TempData.Remove("Home");
+                    return RedirectToAction("Index", "Home"); 
+                }
             }
 
             return RedirectToAction(nameof(Index));
-
-
         }
         #endregion
 
@@ -104,12 +120,20 @@ namespace MMS_ADP631_FA1.Controllers
                 existingRequest.Status = serviceRequest.Status;
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Updated status saved successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Updated status saved successfully";
+                }
+
                 return Ok();
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected service request status. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was problem saving the changes made to the selected service request status. Please try again.";
+                }
+
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -174,13 +198,20 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.ServiceRequests.Remove(serviceRequest);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Service Request deleted successfully";
-                return Ok();
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Service Request deleted successfully";
+                }
 
+                return Ok();
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was an error deleting the Service Request. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error deleting the Service Request. Please try again.";
+                }
+
                 return StatusCode(500, "Internal server error");
             }
         }

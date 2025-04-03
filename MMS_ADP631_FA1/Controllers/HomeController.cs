@@ -10,13 +10,16 @@ namespace MMS_ADP631_FA1.Controllers
 
         public HomeController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context)); ;
         }
 
         public IActionResult Index()
         {
             // This is to assist with the redirect logic of creating a new Citizen or Service Request
-            TempData["Home"] = true;
+            if (TempData != null)
+            {
+                TempData["Home"] = true;
+            }
 
             var serviceRequests = _context.ServiceRequests.ToList();
             var citizens = _context.Citizens.ToList();

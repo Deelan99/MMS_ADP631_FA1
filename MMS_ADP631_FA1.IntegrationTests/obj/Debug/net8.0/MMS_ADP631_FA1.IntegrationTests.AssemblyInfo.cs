@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMS_ADP631_FA1.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4c649df402da24ef8d465f4c0785537a087d0d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a30e400d53201866c57285830f0a9b7681b5f1ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMS_ADP631_FA1.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMS_ADP631_FA1.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

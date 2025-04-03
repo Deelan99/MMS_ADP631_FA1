@@ -11,14 +11,19 @@ namespace MMS_ADP631_FA1.Controllers
 
         public ReportsController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         // GET Report
         public IActionResult Index()
         {
-            var staff = _context.Staff.ToList();
-            var reports = _context.Reports.ToList();
+            if (_context == null)
+            {
+                return Problem("Database context is not available.");
+            }
+
+            var staff = _context.Staff?.ToList() ?? new List<Staff>();
+            var reports = _context.Reports?.ToList() ?? new List<Report>();
             var model = new Tuple<List<Report>, List<Staff>>(reports, staff);
             return View(model);
         }
@@ -41,12 +46,21 @@ namespace MMS_ADP631_FA1.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(report);
-                TempData["SuccessfulMessage"] = "Report created successfully";
+
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Report created successfully";
+                }
+
                 _context.SaveChanges();
             }
             else
             {
-                TempData["ErrorMessage"] = "There was an error creating the report. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error creating the report. Please try again.";
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Index));
@@ -92,12 +106,19 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.Update(existingReport);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Changes saved to the selected Report successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Changes saved to the selected Report successfully";
+                }
+
                 return Ok();
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Report. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was problem saving the changes made to the selected Report. Please try again.";
+                }
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -132,13 +153,19 @@ namespace MMS_ADP631_FA1.Controllers
                 _context.Reports.Remove(report);
                 _context.SaveChanges();
 
-                TempData["SuccessfulMessage"] = "Report deleted successfully";
+                if (TempData != null)
+                {
+                    TempData["SuccessfulMessage"] = "Report deleted successfully";
+                }
                 return Ok();
 
             }
             catch (Exception)
             {
-                TempData["ErrorMessage"] = "There was an error deleting the Report. Please try again.";
+                if (TempData != null)
+                {
+                    TempData["ErrorMessage"] = "There was an error deleting the Report. Please try again.";
+                }
                 return StatusCode(500, "Internal server error");
             }
         }
